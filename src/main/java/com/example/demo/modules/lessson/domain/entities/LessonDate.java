@@ -17,19 +17,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "", catalog = "")
+@Table(name = "lesson_date", catalog = "lesson")
 public class LessonDate implements ILessonDate {
 
     @Id
     @Column(name = "lesson_date_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    
+
     private Weekday weekday;
 
     private LocalTime startTime;
 
     private LocalTime endTime;
+
+    public UUID getId() {
+        return id;
+    }
 
     @Override
     public String getWeekDay() {

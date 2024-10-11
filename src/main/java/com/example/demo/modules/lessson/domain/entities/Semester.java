@@ -20,4 +20,12 @@ public enum Semester {
         return semester;
     }
 
+    public static Semester toSemester(String semester) {
+        for (Semester value : Semester.values()) {
+            if (semester.equals(value.getSemester()))
+                return value;
+        }
+        return null;
+    }
+
 }

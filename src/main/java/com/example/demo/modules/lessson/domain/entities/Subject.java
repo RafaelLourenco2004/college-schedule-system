@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "", catalog = "")
+@Table(name = "subject", catalog = "lesson")
 public class Subject {
     
     @Id
@@ -29,6 +29,21 @@ public class Subject {
     private Integer credit;
 
     private Semester semester;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCredit(Integer credit) throws Exception{
+        if (credit <= 0) throw new Exception();
+        this.credit = credit;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
+    }
+
+    
 
 
 
