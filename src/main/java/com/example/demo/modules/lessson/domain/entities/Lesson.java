@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "lesson", catalog = "lesson")
+@Table(name = "lesson", schema = "lesson", catalog = "lesson")
 public class Lesson {
 
     @EmbeddedId

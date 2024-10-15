@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "lesson_date", catalog = "lesson")
+@Table(name = "lesson_date", schema = "lesson", catalog = "lesson")
 public class LessonDate implements ILessonDate {
 
     @Id

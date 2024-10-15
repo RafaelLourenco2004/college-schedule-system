@@ -2,10 +2,12 @@ package com.example.demo.modules.lessson.domain.entities;
 
 import java.util.UUID;
 
+import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
+import com.example.demo.modules.lessson.persistence.converters.SemesterConverter;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,26 +18,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "subject", catalog = "lesson")
+@Table(name = "subject", schema = "lesson", catalog = "lesson")
 public class Subject {
     
     @Id
     @Column(name = "subject_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
 
     private Integer credit;
 
+    @Convert(converter = SemesterConverter.class)
     private Semester semester;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setCredit(Integer credit) throws Exception{
-        if (credit <= 0) throw new Exception();
+    public void setCredit(Integer credit) throws InvalidAttributeValueException{
+        if (credit <= 0) throw new InvalidAttributeValueException("Credit must be greater than 0");
         this.credit = credit;
     }
 
