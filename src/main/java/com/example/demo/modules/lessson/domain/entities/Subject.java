@@ -1,5 +1,6 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
@@ -9,6 +10,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +32,13 @@ public class Subject {
     private String name;
 
     private Integer credit;
+
+    @ManyToOne()
+    @JoinColumn(name = "courseId")
+    private Course course;
+
+    // @ManyToMany(mappedBy = "finishedSubjects")
+    // private List<Student> graduatedStudents;
 
     @Convert(converter = SemesterConverter.class)
     private Semester semester;

@@ -6,12 +6,13 @@ import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
 import com.example.demo.modules.lessson.persistence.services.ISubjectService;
 
+
 @Service
 public class CreateSubject {
 
     private ISubjectService subjectService;
 
-    public CreateSubject(ISubjectService subjectService) {
+    public CreateSubject(ISubjectService subjectService) { 
         this.subjectService = subjectService;
     }
 
@@ -20,7 +21,7 @@ public class CreateSubject {
         Subject newSubject = subjectService.create(subject);
         return newSubject;
     }
-
+ 
     private void throwIfNameAlreadyExists(String name) throws EntityAlreadyExistsException {
         if (subjectService.exists(name))
             throw new EntityAlreadyExistsException(String.format("A subject named %s already exists", name));

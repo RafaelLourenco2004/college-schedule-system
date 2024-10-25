@@ -30,7 +30,7 @@ public class Lesson {
         this.subject = subject;
         this.classroom = classroom;
         this.date = date;
-        id = new LessonId(subject.getId(), classroom.getId(), date.getId());
+        id = new LessonId(subject.getId(), classroom.getId());
     }
 
 }
