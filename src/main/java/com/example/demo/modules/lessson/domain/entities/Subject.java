@@ -11,7 +11,6 @@ import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -37,9 +36,6 @@ public class Subject {
     @JoinColumn(name = "courseId")
     private Course course;
 
-    // @ManyToMany(mappedBy = "finishedSubjects")
-    // private List<Student> graduatedStudents;
-
     @Convert(converter = SemesterConverter.class)
     private Semester semester;
 
@@ -50,6 +46,10 @@ public class Subject {
     public void setCredit(Integer credit) throws InvalidAttributeValueException{
         if (credit <= 0) throw new InvalidAttributeValueException("Credit must be greater than 0");
         this.credit = credit;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public void setSemester(Semester semester) {

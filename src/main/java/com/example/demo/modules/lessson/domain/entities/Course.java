@@ -20,8 +20,8 @@ import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueE
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "course", schema = "lesson", catalog = "lesson")
 @Entity
+@Table(name = "course", schema = "lesson", catalog = "lesson")
 public class Course {
 
     @Id
@@ -32,6 +32,9 @@ public class Course {
     private String name;
 
     private Integer totalCredits;
+
+    @Column(name = "acronym_id")
+    private String acronymId;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
     private List<Subject> subjects;
@@ -47,5 +50,9 @@ public class Course {
         if (totalCredits < 0)
             throw new InvalidAttributeValueException("Invalid value for field total credits");
         this.totalCredits = totalCredits;
+    }
+
+    public void setAcronymId(String acronymId) {
+        this.acronymId = acronymId;
     }
 }

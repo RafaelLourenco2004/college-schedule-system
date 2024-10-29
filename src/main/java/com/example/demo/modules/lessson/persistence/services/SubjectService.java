@@ -24,7 +24,8 @@ public class SubjectService implements ISubjectService {
                 UUID.randomUUID(),
                 subject.getName(),
                 subject.getSemester().getSemester(),
-                subject.getCredit());
+                subject.getCredit(),
+                subject.getCourse().getId());
     }
 
     @Override

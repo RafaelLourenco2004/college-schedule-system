@@ -16,29 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.modules.lessson.domain.dtos.SubjectDto;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.mappers.SubjectMapper;
-import com.example.demo.modules.lessson.domain.usecases.subject.CreateSubject;
-import com.example.demo.modules.lessson.domain.usecases.subject.GetSubject;
+import com.example.demo.modules.lessson.domain.usecases.subject.SubjectPostService;
+import com.example.demo.modules.lessson.domain.usecases.subject.SubjectGetService;
 
 @RestController
 @RequestMapping("/subject")
 public class SubjectController {
 
     @Autowired
-    private CreateSubject create;
+    private SubjectPostService postService;
 
     @Autowired
-    private GetSubject get;
+    private SubjectGetService getService;
 
-    @PostMapping()
-    public ResponseEntity<SubjectDto> create(@RequestBody SubjectDto dto) throws Exception {
+    @PostMapping("/{courseId}")
+    public ResponseEntity<SubjectDto> create(@RequestBody SubjectDto dto,
+            @PathVariable UUID courseId) throws Exception {
         Subject subject = SubjectMapper.toSubject(dto);
-        Subject newSubject = create.create(subject);
+        Subject newSubject = postService.create(subject, courseId);
         return ResponseEntity.status(HttpStatus.CREATED).body(SubjectMapper.toDto(newSubject));
     }
 
     @GetMapping()
     public ResponseEntity<List<SubjectDto>> getAll() {
-        List<Subject> subjects = get.getAll();
+        List<Subject> subjects = getService.getAll();
         List<SubjectDto> dtos = subjects.stream()
                 .map((subject) -> SubjectMapper.toDto(subject))
                 .toList();
@@ -47,7 +48,7 @@ public class SubjectController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SubjectDto> getOne(@PathVariable("id") UUID id) {
-        Subject subject = get.getOne(id);
+        Subject subject = getService.getOne(id);
         return ResponseEntity.status(HttpStatus.OK).body(SubjectMapper.toDto(subject));
     }
 
