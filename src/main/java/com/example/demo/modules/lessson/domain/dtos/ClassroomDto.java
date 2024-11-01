@@ -3,6 +3,8 @@ package com.example.demo.modules.lessson.domain.dtos;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.entities.Semester;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +25,6 @@ public class ClassroomDto {
 
     private Semester semester;
 
+    @JsonProperty(access = Access.READ_ONLY)
     private CourseDto course;
 }

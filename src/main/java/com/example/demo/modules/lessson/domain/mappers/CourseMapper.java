@@ -5,7 +5,6 @@ import com.example.demo.modules.lessson.domain.entities.Course;
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 import com.example.demo.modules.lessson.domain.exceptions.MissingFieldException;
 
-import java.util.Optional;
 
 public class CourseMapper {
 

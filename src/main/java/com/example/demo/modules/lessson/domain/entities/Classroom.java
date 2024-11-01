@@ -22,7 +22,7 @@ public class Classroom {
     @Id
     @Column(name = "classroom_id")
     private UUID id;
-
+ 
     private String name;
 
     private Integer capacity;

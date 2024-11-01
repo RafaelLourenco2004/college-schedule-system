@@ -22,7 +22,7 @@ public class Lesson {
     @JoinColumn(name = "classroom_id", insertable = false, updatable = false)
     private Classroom classroom;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
     private LessonDate date;
 

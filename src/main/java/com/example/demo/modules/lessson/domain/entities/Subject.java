@@ -1,6 +1,5 @@
 package com.example.demo.modules.lessson.domain.entities;
 
-import java.util.List;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;

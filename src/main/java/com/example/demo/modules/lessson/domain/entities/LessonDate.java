@@ -1,6 +1,7 @@
 package com.example.demo.modules.lessson.domain.entities;
 
 import java.time.LocalTime;
+import java.time.Duration;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.interfaces.ILessonDate;
@@ -29,7 +30,13 @@ public class LessonDate implements ILessonDate {
 
     private LocalTime startTime;
 
-    private LocalTime endTime;
+    private Duration duration; 
+
+    public LessonDate(Weekday weekday, LocalTime startTime, Duration duration) {
+        this.weekday = weekday;
+        this.startTime = startTime;
+        this.duration = duration;
+    }
 
     public UUID getId() {
         return id;
@@ -46,8 +53,8 @@ public class LessonDate implements ILessonDate {
     }
 
     @Override
-    public LocalTime getEndTime() {
-        return endTime;
+    public Duration getDuration() {
+        return duration;
     }
 
 }

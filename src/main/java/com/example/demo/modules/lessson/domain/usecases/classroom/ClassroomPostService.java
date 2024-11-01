@@ -23,12 +23,13 @@ public class ClassroomPostService {
     }
 
     public Classroom create(Classroom classroom, UUID course_id) {
+        Course course = courseGetService.getOne(course_id);
+        classroom.setCourse(course);
+
         String className = generatedClassName(classroom);
         throwIfAlreadyExists(className);
-
-        Course course = courseGetService.getOne(course_id);
         classroom.setName(className);
-        classroom.setCourse(course);
+
         return service.create(classroom);
     }
 
