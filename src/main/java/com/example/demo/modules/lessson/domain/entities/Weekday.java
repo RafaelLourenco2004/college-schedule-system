@@ -19,4 +19,12 @@ public enum Weekday {
     public String getWeekDay() {
         return weekDay;
     }
+
+    public static Weekday toWeekDay(String day) {
+        for (Weekday weekday : Weekday.values()) {
+            if (weekday.getWeekDay().equals(day))
+                return weekday;
+        }
+        return null;
+    }
 }

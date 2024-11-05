@@ -1,4 +1,4 @@
-package com.example.demo.modules.lessson.domain.usecases.lesson.creation;
+package com.example.demo.modules.lessson.domain.usecases.lesson.date;
 
 import java.time.LocalTime;
 

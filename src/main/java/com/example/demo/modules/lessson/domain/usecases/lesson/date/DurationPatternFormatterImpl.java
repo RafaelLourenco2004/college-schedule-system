@@ -1,4 +1,4 @@
-package com.example.demo.modules.lessson.domain.usecases.lesson.creation;
+package com.example.demo.modules.lessson.domain.usecases.lesson.date;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
@@ -16,6 +16,7 @@ public class DurationPatternFormatterImpl implements DurationPatternFormatter {
         pattern = Pattern.compile("^(?:[0-9]|[1-5][0-9]|(?:[01]?[0-9]|2[0-3]):[0-5][0-9])$");
     }
 
+    @Override
     public Duration getDuration(String str) throws InvalidAttributeValueException {
         String durationPattern = getDurationPattern(str);
         Duration duration = Duration.parse(durationPattern);
