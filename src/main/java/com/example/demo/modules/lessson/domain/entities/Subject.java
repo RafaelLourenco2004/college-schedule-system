@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "subject", schema = "lesson", catalog = "lesson")
 public class Subject {
-    
+
     @Id
     @Column(name = "subject_id")
     private UUID id;
@@ -42,8 +42,9 @@ public class Subject {
         this.name = name;
     }
 
-    public void setCredit(Integer credit) throws InvalidAttributeValueException{
-        if (credit <= 0) throw new InvalidAttributeValueException("Credit must be greater than 0");
+    public void setCredit(Integer credit) throws InvalidAttributeValueException {
+        if (credit <= 0)
+            throw new InvalidAttributeValueException("Credit must be greater than 0");
         this.credit = credit;
     }
 
@@ -52,12 +53,9 @@ public class Subject {
     }
 
     public void setSemester(Semester semester) {
+        if (semester == null)
+            throw new InvalidAttributeValueException("Semester must be between 1 and 8.");
         this.semester = semester;
     }
-
-    
-
-
-
 
 }

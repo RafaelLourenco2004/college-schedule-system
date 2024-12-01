@@ -1,10 +1,13 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 
@@ -24,15 +27,29 @@ public class Lesson {
     @JoinColumn(name = "classroom_id", insertable = false, updatable = false)
     private Classroom classroom;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-    @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
-    private LessonDate date;
+    // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy = "lesson")
+    private List<LessonDate> dates;
 
-    public Lesson(Subject subject, Classroom classroom, LessonDate date) {
+    // @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
+    // private LessonDate date;
+
+    public Lesson(Subject subject, Classroom classroom) {
         this.subject = subject;
         this.classroom = classroom;
-        this.date = date;
         id = new LessonId(subject.getId(), classroom.getId());
     }
+
+    public void setDates(List<LessonDate> dates){
+        this.dates = dates;
+    }
+
+    // public Lesson(Subject subject, Classroom classroom, LessonDate date) {
+    //     this.subject = subject;
+    //     this.classroom = classroom;
+    //     this.date = date;
+    //     id = new LessonId(subject.getId(), classroom.getId());
+    // }
 
 }

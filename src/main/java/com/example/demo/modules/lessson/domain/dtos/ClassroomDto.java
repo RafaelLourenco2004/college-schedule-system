@@ -23,7 +23,7 @@ public class ClassroomDto {
 
     private Integer capacity;
 
-    private Semester semester;
+    private String semester;
 
     @JsonProperty(access = Access.READ_ONLY)
     private CourseDto course;

@@ -12,7 +12,7 @@ public class LessonMapper {
 
         dto.setSubject(SubjectMapper.toDto(lesson.getSubject()));
         dto.setClassroom(ClassroomMapper.toDto(lesson.getClassroom()));
-        dto.setDate(toLessonDateDto(lesson.getDate()));
+        // dto.setDate(toLessonDateDto(lesson.getDates()));
 
         return dto;
     }

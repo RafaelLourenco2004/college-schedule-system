@@ -1,5 +1,6 @@
 package com.example.demo.modules.lessson.controllers;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modules.lessson.domain.dtos.LessonDateDto;
+import com.example.demo.modules.lessson.domain.dtos.LessonDatesDto;
 import com.example.demo.modules.lessson.domain.dtos.LessonDto;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
@@ -30,14 +32,17 @@ public class LessonController {
     private LessonDateFactory dateFactory;
 
     @PostMapping("/{subjectId}/{classroomId}")
-    public ResponseEntity<LessonDto> create(@RequestBody LessonDateDto dateDto, @PathVariable UUID subjectId,
-            @PathVariable UUID classroomId) {
-        LessonDate date = dateFactory.getLessonDate(
-                dateDto.getTime(),
-                dateDto.getDuration(),
-                dateDto.getWeekday());
+    public ResponseEntity<LessonDto> create(@RequestBody LessonDatesDto dateDto,
+            @PathVariable("subjectId") UUID subjectId, @PathVariable("classroomId") UUID classroomId) {
+        // LessonDate date = dateFactory.getLessonDate(
+        // dateDto.getTime(),
+        // dateDto.getDuration(),
+        // dateDto.getWeekday());
+        List<LessonDate> dates = dateDto.getDates().stream()
+                .map((date) -> dateFactory.getLessonDate(date.getTime(), date.getDuration(), date.getWeekday()))
+                .toList();
 
-        Lesson lesson = postService.createLesson(subjectId, classroomId, date);
+        Lesson lesson = postService.createLesson(subjectId, classroomId, dates);
         return ResponseEntity.status(HttpStatus.CREATED).body(LessonMapper.toDto(lesson));
     }
 }

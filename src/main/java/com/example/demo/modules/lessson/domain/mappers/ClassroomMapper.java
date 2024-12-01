@@ -12,19 +12,20 @@ public class ClassroomMapper {
         dto.setId(classroom.getId());
         dto.setName(classroom.getName());
         dto.setCapacity(classroom.getCapacity());
-        dto.setSemester(classroom.getSemester());
+        dto.setSemester(classroom.getSemester().getSemester());
         dto.setCourse(CourseMapper.toDto(classroom.getCourse()));
 
         return dto;
 
     }
 
-    public static Classroom toClassroom(ClassroomDto dto) { 
+    public static Classroom toClassroom(ClassroomDto dto) {
         Classroom classroom = new Classroom();
 
         classroom.setName((String) Utils.getOrThrowIfMissing(dto.getName(), "classroom"));
         classroom.setCapacity((Integer) Utils.getOrThrowIfMissing(dto.getCapacity(), "classroom"));
-        classroom.setSemester((Semester) Utils.getOrThrowIfMissing(dto.getSemester(), "classroom"));
+        classroom.setSemester((Semester) Semester.toSemester(
+                (String) Utils.getOrThrowIfMissing(dto.getSemester(), "classroom")));
 
         return classroom;
     }
