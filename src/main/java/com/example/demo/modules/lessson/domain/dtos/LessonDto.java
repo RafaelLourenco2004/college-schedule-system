@@ -1,5 +1,7 @@
 package com.example.demo.modules.lessson.domain.dtos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +17,5 @@ public class LessonDto {
     
     private ClassroomDto classroom;
 
-    private LessonDateDto date;
+    private List<LessonDateDto> dates;
 }

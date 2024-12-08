@@ -4,7 +4,9 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Embeddable
 public class LessonId {
 

@@ -1,5 +1,7 @@
 package com.example.demo.modules.lessson.domain.mappers;
 
+import java.util.List;
+
 import com.example.demo.modules.lessson.domain.dtos.LessonDateDto;
 import com.example.demo.modules.lessson.domain.dtos.LessonDto;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
@@ -12,7 +14,12 @@ public class LessonMapper {
 
         dto.setSubject(SubjectMapper.toDto(lesson.getSubject()));
         dto.setClassroom(ClassroomMapper.toDto(lesson.getClassroom()));
-        // dto.setDate(toLessonDateDto(lesson.getDates()));
+
+        List<LessonDateDto> dates = lesson.getDates().stream()
+                .map((date) -> toLessonDateDto(date))
+                .toList();
+
+        dto.setDates(dates);
 
         return dto;
     }

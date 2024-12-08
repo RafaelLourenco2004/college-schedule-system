@@ -2,7 +2,6 @@ package com.example.demo.modules.lessson.domain.dtos;
 
 import java.util.UUID;
 
-import com.example.demo.modules.lessson.domain.entities.Semester;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 

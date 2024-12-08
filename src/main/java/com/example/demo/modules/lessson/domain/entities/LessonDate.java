@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,7 +36,7 @@ public class LessonDate implements ILessonDate {
     private Duration duration; 
 
     @ManyToOne()
-    @JoinColumn(name = "id")
+    @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
     private Lesson lesson;
 
     public LessonDate(Weekday weekday, LocalTime startTime, Duration duration) {

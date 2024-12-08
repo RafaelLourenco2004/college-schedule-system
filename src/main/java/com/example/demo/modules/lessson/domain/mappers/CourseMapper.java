@@ -22,9 +22,9 @@ public class CourseMapper {
             InvalidAttributeValueException {
         Course course = new Course();
 
-        course.setName((String) Utils.getOrThrowIfMissing(course.getName(), "course"));
-        course.setTotalCredits((Integer) Utils.getOrThrowIfMissing(course.getTotalCredits(), "course"));
-        course.setAcronymId((String) Utils.getOrThrowIfMissing(course.getAcronymId(), "course"));
+        course.setName((String) Utils.getOrThrowIfMissing(dto.getName(), "course"));
+        course.setTotalCredits((Integer) Utils.getOrThrowIfMissing(dto.getTotalCredits(), "course"));
+        course.setAcronymId((String) Utils.getOrThrowIfMissing(dto.getAcronymId(), "course"));
         return course;
     }
 }
