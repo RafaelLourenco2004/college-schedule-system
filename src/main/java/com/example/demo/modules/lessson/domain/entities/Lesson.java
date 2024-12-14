@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -30,7 +31,8 @@ public class Lesson {
     private Classroom classroom;
 
     // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy = "lesson")
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
     private List<LessonDate> dates;
 
     // @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})

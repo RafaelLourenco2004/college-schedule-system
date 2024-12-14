@@ -28,8 +28,9 @@ public class LessonMapper {
         LessonDateDto dto = new LessonDateDto();
 
         dto.setWeekday(date.getWeekDay());
-        dto.setTime(date.getStartTime().toString());
-        dto.setDuration(date.getDuration().toString());
+        dto.setStartTime(date.getStartTime().toString());
+        dto.setEndTime(date.getEndTime().toString());
+        // dto.setDuration(date.getDuration().toString());
 
         return dto;
     }

@@ -36,7 +36,7 @@ public class SubjectController {
         Subject newSubject = postService.create(subject, courseId);
         return ResponseEntity.status(HttpStatus.CREATED).body(SubjectMapper.toDto(newSubject));
     }
-
+    
     @GetMapping()
     public ResponseEntity<List<SubjectDto>> getAll() {
         List<Subject> subjects = getService.getAll();

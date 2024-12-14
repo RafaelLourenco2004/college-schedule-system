@@ -29,20 +29,22 @@ public class LessonController {
 
     @Autowired
     private LessonDateFactory dateFactory;
-
+        
     @PostMapping("/{subjectId}/{classroomId}")
     public ResponseEntity<LessonDto> create(@RequestBody LessonDatesDto datesDto,
             @PathVariable("subjectId") UUID subjectId, @PathVariable("classroomId") UUID classroomId) {
-        // LessonDate date = dateFactory.getLessonDate(
-        // dateDto.getTime(),
-        // dateDto.getDuration(),
-        // dateDto.getWeekday());
         List<LessonDate> dates = datesDto.getDates().stream()
-                .map((date) -> dateFactory.getLessonDate(date.getTime(), date.getDuration(),
-                        date.getWeekday()))
+                .map((date) -> dateFactory.getLessonDate(UUID.randomUUID(), date.getStartTime(), 
+                        date.getEndTime(), date.getWeekday()))
                 .toList();
+
+        dates.forEach((date) -> {
+                date.setSubjectId(subjectId);
+                date.setClassroomId(classroomId);
+        });
 
         Lesson lesson = postService.createLesson(subjectId, classroomId, dates);
         return ResponseEntity.status(HttpStatus.CREATED).body(LessonMapper.toDto(lesson));
     }
+
 }

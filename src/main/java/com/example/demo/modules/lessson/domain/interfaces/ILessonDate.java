@@ -9,6 +9,6 @@ public interface ILessonDate {
 
     LocalTime getStartTime();
 
-    Duration getDuration();
+    // Duration getDuration();
 
 }

@@ -13,7 +13,9 @@ public class LessonDateDto {
 
     private String weekday;
 
-    private String time;
+    private String startTime;
 
-    private String duration;
+    private String endTime;
+
+    // private String duration;
 }

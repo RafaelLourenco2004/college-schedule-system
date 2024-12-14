@@ -11,7 +11,7 @@ import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueE
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
 import com.example.demo.modules.lessson.domain.usecases.classroom.ClassroomGetService;
 import com.example.demo.modules.lessson.domain.usecases.subject.SubjectGetService;
-import com.example.demo.modules.lessson.persistence.repositories.LessonRepository;
+import com.example.demo.modules.lessson.persistence.services.ILessonService;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +26,7 @@ public class LessonPostService {
     private ClassroomGetService classroomService;
 
     @Autowired
-    private LessonRepository repository;
+    private ILessonService lessonService;
 
     public Lesson createLesson(UUID subjectId, UUID classroomId, List<LessonDate> dates)
             throws NotFoundException, InvalidAttributeValueException {
@@ -40,7 +40,7 @@ public class LessonPostService {
         // Lesson lesson = new Lesson(subject, classroom, date);
         Lesson lesson = new Lesson(subject, classroom);
         lesson.setDates(dates);
-        Lesson newLesson = repository.save(lesson);
+        Lesson newLesson = lessonService.create(lesson);
         return newLesson;
     }
 

@@ -29,21 +29,38 @@ public class LessonDate implements ILessonDate {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "week_day")
     private Weekday weekday;
-
+    
+    @Column(name = "start_time")
     private LocalTime startTime;
+    
+    @Column(name = "end_time")
+    private LocalTime endTime;
 
-    private Duration duration; 
+    // private Duration duration; 
 
-    @ManyToOne()
-    @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
-    private Lesson lesson;
+    // @ManyToOne()
+    // @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
+    // private Lesson lesson;
 
-    public LessonDate(Weekday weekday, LocalTime startTime, Duration duration) {
+    @Column(name = "subject_id")
+    private UUID subjectId;
+
+    @Column(name = "classroom_id")
+    private UUID classroom_id;
+
+    public LessonDate(UUID id, Weekday weekday, LocalTime startTime, LocalTime endTime) {
+        this.id = id;
         this.weekday = weekday;
         this.startTime = startTime;
-        this.duration = duration;
+        this.endTime = endTime;
     }
+    // public LessonDate(Weekday weekday, LocalTime startTime, Duration duration) {
+    //     this.weekday = weekday;
+    //     this.startTime = startTime;
+    //     this.duration = duration;
+    // }
 
     public UUID getId() {
         return id;
@@ -59,9 +76,21 @@ public class LessonDate implements ILessonDate {
         return startTime;
     }
 
-    @Override
-    public Duration getDuration() {
-        return duration;
+    public LocalTime getEndTime(){
+        return endTime;
     }
+
+    public void setSubjectId(UUID subjectid){
+        this.subjectId = subjectid;
+    }
+
+    public void setClassroomId(UUID classroomId){
+        this.classroom_id = classroomId;
+    }
+
+    // @Override
+    // public Duration getDuration() {
+    //     return duration;
+    // }
 
 }

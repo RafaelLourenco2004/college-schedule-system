@@ -4,6 +4,7 @@ import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.entities.Weekday;
 
 import java.time.LocalTime;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -22,10 +23,11 @@ public class LessonDateFactoryImpl implements LessonDateFactory {
     }
 
     @Override
-    public LessonDate getLessonDate(String time, String duration, String weekday) {
-        LocalTime newTime = timePatternFormatter.getTime(time);
-        Duration newDuration = durationPatternFormatter.getDuration(duration);
-        return new LessonDate(Weekday.toWeekDay(weekday), newTime, newDuration);
+    public LessonDate getLessonDate(UUID id, String startTime, String endTime, String weekday) {
+        LocalTime newStartTime = timePatternFormatter.getTime(startTime);
+        LocalTime newEndTime = timePatternFormatter.getTime(endTime);
+        // Duration newDuration = durationPatternFormatter.getDuration(duration);
+        return new LessonDate(id, Weekday.toWeekDay(weekday), newStartTime, newEndTime);
     }
 
 }
