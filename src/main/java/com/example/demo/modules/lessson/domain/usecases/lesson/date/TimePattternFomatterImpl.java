@@ -14,6 +14,7 @@ public class TimePattternFomatterImpl implements TimePatternFormatter {
     @Override
     public LocalTime getTime(String time) throws InvalidAttributeValueException {
         try {
+            System.out.printf("TIME: ", time.toUpperCase());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime newTime = LocalTime.parse(time, formatter);
             return newTime;

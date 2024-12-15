@@ -1,0 +1,27 @@
+package com.example.demo.modules.lessson.persistence.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.modules.lessson.domain.entities.LessonDate;
+import com.example.demo.modules.lessson.persistence.repositories.LessonDateRepository;
+
+@Service
+public class LessonDateService implements ILessonDateService{
+
+    @Autowired
+    private LessonDateRepository repository;
+    
+    @Override
+    public LessonDate create(LessonDate date) {
+        return repository.create(
+            date.getId(),
+            date.getSubjectId(),
+            date.getClassroom_id(),
+            date.getWeekDay().getWeekDay(),
+            date.getStartTime(),
+            date.getEndTime()
+        );
+    }
+    
+}

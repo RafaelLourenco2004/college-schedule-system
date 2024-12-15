@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "lesson_date", schema = "lesson", catalog = "lesson")
-public class LessonDate implements ILessonDate {
+public class LessonDate {
 
     @Id
     @Column(name = "lesson_date_id")
@@ -66,18 +66,26 @@ public class LessonDate implements ILessonDate {
         return id;
     }
 
-    @Override
-    public String getWeekDay() {
-        return weekday.getWeekDay();
+    // @Override
+    public Weekday getWeekDay() {
+        return weekday;
     }
 
-    @Override
+    // @Override
     public LocalTime getStartTime() {
         return startTime;
     }
 
     public LocalTime getEndTime(){
         return endTime;
+    }
+
+    public UUID getSubjectId() {
+        return subjectId;
+    }
+
+    public UUID getClassroom_id() {
+        return classroom_id;
     }
 
     public void setSubjectId(UUID subjectid){

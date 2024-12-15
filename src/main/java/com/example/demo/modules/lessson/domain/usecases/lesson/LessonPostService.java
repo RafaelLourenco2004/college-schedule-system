@@ -28,7 +28,7 @@ public class LessonPostService {
     @Autowired
     private ILessonService lessonService;
 
-    public Lesson createLesson(UUID subjectId, UUID classroomId, List<LessonDate> dates)
+    public Lesson createLesson(UUID subjectId, UUID classroomId)
             throws NotFoundException, InvalidAttributeValueException {
         Subject subject = subjectService.getOne(subjectId);
         Classroom classroom = classroomService.getOne(classroomId);
@@ -37,11 +37,24 @@ public class LessonPostService {
             throw new InvalidAttributeValueException(
                     "Subjects and classes from different semesters cannot be correlated.");
 
-        // Lesson lesson = new Lesson(subject, classroom, date);
         Lesson lesson = new Lesson(subject, classroom);
-        lesson.setDates(dates);
         Lesson newLesson = lessonService.create(lesson);
         return newLesson;
     }
+    // public Lesson createLesson(UUID subjectId, UUID classroomId, List<LessonDate> dates)
+    //         throws NotFoundException, InvalidAttributeValueException {
+    //     Subject subject = subjectService.getOne(subjectId);
+    //     Classroom classroom = classroomService.getOne(classroomId);
+
+    //     if (!subject.getSemester().equals(classroom.getSemester()))
+    //         throw new InvalidAttributeValueException(
+    //                 "Subjects and classes from different semesters cannot be correlated.");
+
+    //     // Lesson lesson = new Lesson(subject, classroom, date);
+    //     Lesson lesson = new Lesson(subject, classroom);
+    //     lesson.setDates(dates);
+    //     Lesson newLesson = lessonService.create(lesson);
+    //     return newLesson;
+    // }
 
 }

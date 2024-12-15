@@ -2,9 +2,12 @@ package com.example.demo.modules.lessson.domain.usecases.lesson.date;
 
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.entities.Weekday;
+import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 
 import java.time.LocalTime;
 import java.util.UUID;
+import java.util.Optional;
+
 
 import org.springframework.stereotype.Service;
 
@@ -20,14 +23,21 @@ public class LessonDateFactoryImpl implements LessonDateFactory {
     public LessonDateFactoryImpl() {
         this.timePatternFormatter = new TimePattternFomatterImpl();
         this.durationPatternFormatter = new DurationPatternFormatterImpl();
-    }
+    } 
 
     @Override
-    public LessonDate getLessonDate(UUID id, String startTime, String endTime, String weekday) {
+    public LessonDate getLessonDate(UUID id, UUID subjectId, UUID classroomId, String startTime,
+            String endTime, String weekday) {
         LocalTime newStartTime = timePatternFormatter.getTime(startTime);
         LocalTime newEndTime = timePatternFormatter.getTime(endTime);
-        // Duration newDuration = durationPatternFormatter.getDuration(duration);
-        return new LessonDate(id, Weekday.toWeekDay(weekday), newStartTime, newEndTime);
+
+        return new LessonDate(id, getWeekday(weekday), newStartTime, newEndTime);
+    }
+
+    private Weekday getWeekday(String weekDay){
+        return Optional.of(Weekday.toWeekDay(weekDay)).orElseThrow(
+            () -> new InvalidAttributeValueException("There is no such week day.")
+        );
     }
 
 }

@@ -17,6 +17,7 @@ import com.example.demo.modules.lessson.domain.dtos.LessonDto;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.mappers.LessonMapper;
+import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDatePostService;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonPostService;
 import com.example.demo.modules.lessson.domain.usecases.lesson.date.LessonDateFactory;
 
@@ -25,25 +26,23 @@ import com.example.demo.modules.lessson.domain.usecases.lesson.date.LessonDateFa
 public class LessonController {
 
     @Autowired
-    private LessonPostService postService;
+    private LessonPostService lessonPostService;
 
     @Autowired
-    private LessonDateFactory dateFactory;
+    private LessonDatePostService lessonDatePostService;
         
     @PostMapping("/{subjectId}/{classroomId}")
     public ResponseEntity<LessonDto> create(@RequestBody LessonDatesDto datesDto,
             @PathVariable("subjectId") UUID subjectId, @PathVariable("classroomId") UUID classroomId) {
+
+        Lesson lesson = lessonPostService.createLesson(subjectId, classroomId);
+
         List<LessonDate> dates = datesDto.getDates().stream()
-                .map((date) -> dateFactory.getLessonDate(UUID.randomUUID(), date.getStartTime(), 
-                        date.getEndTime(), date.getWeekday()))
+                .map((date) -> lessonDatePostService.create(subjectId, classroomId, date.getWeekday(), 
+                        date.getStartTime(), date.getEndTime()))
                 .toList();
+        lesson.setDates(dates);
 
-        dates.forEach((date) -> {
-                date.setSubjectId(subjectId);
-                date.setClassroomId(classroomId);
-        });
-
-        Lesson lesson = postService.createLesson(subjectId, classroomId, dates);
         return ResponseEntity.status(HttpStatus.CREATED).body(LessonMapper.toDto(lesson));
     }
 
