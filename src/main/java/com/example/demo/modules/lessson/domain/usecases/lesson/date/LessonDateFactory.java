@@ -6,6 +6,6 @@ import com.example.demo.modules.lessson.domain.entities.LessonDate;
 
 public interface LessonDateFactory {
 
-    LessonDate getLessonDate(UUID id, UUID subjectId, UUID classroomId, String time,
-            String duration, String weekday);
+    LessonDate getLessonDate(UUID id, UUID subjectId, UUID classroomId, String startTime,
+            String endTime, String weekday);
 }

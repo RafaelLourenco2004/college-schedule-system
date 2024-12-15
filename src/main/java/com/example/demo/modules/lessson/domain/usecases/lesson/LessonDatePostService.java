@@ -18,16 +18,16 @@ public class LessonDatePostService {
     @Autowired
     private LessonDateFactory dateFactory;
 
-    public LessonDate create(UUID subjectId, UUID classroomId, String weekDay,
-            String startTime, String endTime) {
+    public LessonDate create(UUID subjectId, UUID classroomId, String startTime,
+            String endTime, String weekDay) {
         LessonDate date = dateFactory.getLessonDate(
                 UUID.randomUUID(),
                 subjectId,
                 classroomId,
-                weekDay,
                 startTime,
-                endTime);
-
+                endTime,
+                weekDay);
+        
         LessonDate newDate = lessonDateService.create(date);
         return newDate;
     }

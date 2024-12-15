@@ -2,7 +2,7 @@ package com.example.demo.modules.lessson.domain.entities;
 
 public enum Weekday {
 
-    MONDAY("saturday"),
+    MONDAY("monday"),
     TUESDAY("tuesday"),
     WEDNESDAY("wednesday"),
     THURSDAY("thursday"),

@@ -19,7 +19,6 @@ import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.mappers.LessonMapper;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDatePostService;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonPostService;
-import com.example.demo.modules.lessson.domain.usecases.lesson.date.LessonDateFactory;
 
 @RestController
 @RequestMapping("/lesson")
@@ -38,8 +37,8 @@ public class LessonController {
         Lesson lesson = lessonPostService.createLesson(subjectId, classroomId);
 
         List<LessonDate> dates = datesDto.getDates().stream()
-                .map((date) -> lessonDatePostService.create(subjectId, classroomId, date.getWeekday(), 
-                        date.getStartTime(), date.getEndTime()))
+                .map((date) -> lessonDatePostService.create(subjectId, classroomId, date.getStartTime(), 
+                        date.getEndTime(), date.getWeekday()))
                 .toList();
         lesson.setDates(dates);
 

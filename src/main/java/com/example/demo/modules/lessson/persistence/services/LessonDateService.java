@@ -18,9 +18,9 @@ public class LessonDateService implements ILessonDateService{
             date.getId(),
             date.getSubjectId(),
             date.getClassroom_id(),
-            date.getWeekDay().getWeekDay(),
             date.getStartTime(),
-            date.getEndTime()
+            date.getEndTime(),
+            date.getWeekDay().getWeekDay()
         );
     }
     
