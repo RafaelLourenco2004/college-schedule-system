@@ -31,7 +31,7 @@ public class Lesson {
     private Classroom classroom;
 
     // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
     private List<LessonDate> dates;
 

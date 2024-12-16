@@ -24,6 +24,6 @@ public class ClassroomDto {
 
     private String semester;
 
-    @JsonProperty(access = Access.READ_ONLY)
+    @JsonProperty(access = Access.WRITE_ONLY)
     private CourseDto course;
 }

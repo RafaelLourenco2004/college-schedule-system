@@ -29,7 +29,7 @@ public class LessonDateFactoryImpl implements LessonDateFactory {
     }
 
     private Weekday getWeekday(String weekDay) throws InvalidAttributeValueException {
-        return Optional.of(Weekday.toWeekDay(weekDay)).orElseThrow(
+        return Optional.ofNullable(Weekday.toWeekDay(weekDay)).orElseThrow(
                 () -> new InvalidAttributeValueException("There is no such week day."));
     }
 
