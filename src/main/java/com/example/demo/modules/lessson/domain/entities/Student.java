@@ -1,5 +1,6 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "table", schema = "lesson", catalog = "lesson")
+@Table(name = "student", schema = "lesson", catalog = "lesson")
 public class Student {
 
     @Id
@@ -28,7 +29,7 @@ public class Student {
     private String name;
 
     @ManyToOne()
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @ManyToMany
@@ -37,6 +38,14 @@ public class Student {
         inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
     private List<Subject> finishedSubjects;
+
+    public Student(String id, String name, Course course){
+        this.id = id;
+        this.name = name;
+        this.course = course;
+        this.finishedSubjects = new ArrayList<>();
+
+    }
 
     public void setName(String name) {
         this.name = name;

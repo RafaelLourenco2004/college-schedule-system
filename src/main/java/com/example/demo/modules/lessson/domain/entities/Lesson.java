@@ -30,14 +30,10 @@ public class Lesson {
     @JoinColumn(name = "classroom_id", insertable = false, updatable = false)
     private Classroom classroom;
 
-    // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
     @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumns({@JoinColumn(name = "subject_id"), @JoinColumn(name = "classroom_id")})
+    @JoinColumns({ @JoinColumn(name = "subject_id", referencedColumnName = "subject_id"),
+            @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id") })
     private List<LessonDate> dates;
-
-    // @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-    // @JoinColumn(name = "lesson_date_id", insertable = false, updatable = false)
-    // private LessonDate date;
 
     public Lesson(Subject subject, Classroom classroom) {
         this.subject = subject;
@@ -45,15 +41,8 @@ public class Lesson {
         id = new LessonId(subject.getId(), classroom.getId());
     }
 
-    public void setDates(List<LessonDate> dates){
+    public void setDates(List<LessonDate> dates) {
         this.dates = dates;
     }
-
-    // public Lesson(Subject subject, Classroom classroom, LessonDate date) {
-    //     this.subject = subject;
-    //     this.classroom = classroom;
-    //     this.date = date;
-    //     id = new LessonId(subject.getId(), classroom.getId());
-    // }
 
 }
