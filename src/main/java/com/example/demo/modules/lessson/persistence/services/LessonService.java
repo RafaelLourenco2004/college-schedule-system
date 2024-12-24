@@ -1,10 +1,12 @@
 package com.example.demo.modules.lessson.persistence.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.Lesson;
+import com.example.demo.modules.lessson.domain.entities.LessonId;
 import com.example.demo.modules.lessson.persistence.repositories.LessonRepository;
 
 @Service
@@ -23,5 +25,10 @@ public class LessonService implements ILessonService {
     @Override
     public List<Lesson> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Lesson> getOne(LessonId id) {
+        return repository.findById(id);
     }
 }

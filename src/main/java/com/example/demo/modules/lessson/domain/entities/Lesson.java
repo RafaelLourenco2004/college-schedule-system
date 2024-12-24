@@ -45,4 +45,8 @@ public class Lesson {
         this.dates = dates;
     }
 
+    public int getWeeklyClasses() {
+        return dates.size();
+    }
+
 }
