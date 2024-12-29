@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.mappers.LessonMapper;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDatePostService;
+import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDeleteService;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonGetService;
 import com.example.demo.modules.lessson.domain.usecases.lesson.LessonPostService;
 
@@ -34,6 +36,9 @@ public class LessonController {
 
     @Autowired
     private LessonGetService lessonGetService;
+
+    @Autowired
+    private LessonDeleteService lessonDeleteService;
         
     @PostMapping("/{subjectId}/{classroomId}")
     public ResponseEntity<LessonDto> create(@RequestBody LessonDatesDto datesDto,
@@ -60,6 +65,12 @@ public class LessonController {
                 .map((lesson) -> LessonMapper.toDto(lesson))
                 .toList();
         return ResponseEntity.status(HttpStatus.OK).body(dtos);
+    }
+
+    @DeleteMapping("/{subjectId}/{classroomId}")
+    public ResponseEntity<String> delete(@PathVariable UUID subjectId, @PathVariable UUID classroomId){
+        lessonDeleteService.delete(subjectId, classroomId);
+        return ResponseEntity.status(HttpStatus.OK).body("");
     }
 
 }

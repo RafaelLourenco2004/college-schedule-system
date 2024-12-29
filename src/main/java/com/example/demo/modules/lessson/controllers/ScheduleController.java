@@ -26,7 +26,7 @@ public class ScheduleController {
     @PostMapping
     public ResponseEntity<List<LessonDto>> setSchedule(@RequestBody ScheduleDto scheduleDto) {
         List<Lesson> schedule = setClassSchedule.setClassSchedule(
-                scheduleDto.getLessonIds(),
+                scheduleDto.getRequiredLessonIds(),
                 null, scheduleDto.getStartTime(),
                 scheduleDto.getEndTime());
         List<LessonDto> dtos = schedule.stream().map((lesson) -> LessonMapper.toDto(lesson)).toList();

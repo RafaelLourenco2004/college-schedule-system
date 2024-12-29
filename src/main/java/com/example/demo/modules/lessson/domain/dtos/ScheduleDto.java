@@ -17,9 +17,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ScheduleDto {
     
-    private List<LessonId> lessonIds;
+    private List<LessonId> requiredLessonIds;
     
-    private LessonTime startTime;
+    private String startTime;
 
-    private LessonTime endTime;
+    private String endTime;
 }

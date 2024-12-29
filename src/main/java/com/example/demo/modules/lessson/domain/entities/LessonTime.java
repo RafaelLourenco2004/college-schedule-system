@@ -36,4 +36,12 @@ public enum LessonTime {
     public String getTime() {
         return time;
     }
+
+    public static LessonTime toLessonTime(String time){
+        for (LessonTime lessonTime: LessonTime.values()){
+            if (time.equals(lessonTime.getTime()))
+                return lessonTime;
+        }
+        return null;
+    }
 }

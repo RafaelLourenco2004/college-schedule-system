@@ -22,15 +22,16 @@ public class Lesson {
     @EmbeddedId
     private LessonId id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne()
     @JoinColumn(name = "subject_id", insertable = false, updatable = false)
     private Subject subject;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne()
     @JoinColumn(name = "classroom_id", insertable = false, updatable = false)
     private Classroom classroom;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    // @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany()
     @JoinColumns({ @JoinColumn(name = "subject_id", referencedColumnName = "subject_id"),
             @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id") })
     private List<LessonDate> dates;

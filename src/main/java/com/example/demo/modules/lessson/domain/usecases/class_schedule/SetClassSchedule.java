@@ -29,13 +29,14 @@ public class SetClassSchedule {
     private Map<Weekday, Map<LocalTime, Lesson>> schedule;
 
     public List<Lesson> setClassSchedule(List<LessonId> requiredLessonsId, Student student,
-            LessonTime startClasses, LessonTime endClasses) {
+            String startClasses, String endClasses) {
 
-        initializeSchedule(startClasses, endClasses);
+        initializeSchedule(LessonTime.toLessonTime(startClasses), LessonTime.toLessonTime(endClasses));
 
         List<Lesson> requiredLessons = requiredLessonsId.stream().map(
                 (id) -> lessonGetService.getOne(id)).toList();
         requiredLessons.stream().forEach((lesson) -> setLesson(lesson));
+
         Collections.sort(requiredLessons, (a, b) -> compareLessonPerWeeklyClasses(a, b));
 
         for (Lesson lesson : requiredLessons) {
@@ -61,6 +62,9 @@ public class SetClassSchedule {
     }
 
     private void initializeSchedule(LessonTime startClasses, LessonTime endClasses) {
+        if (startClasses == null || endClasses == null)
+            throw new InvalidAttributeValueException("The times provided is invalid.");
+
         schedule = new HashMap<>();
 
         Map<LocalTime, Lesson> scheduleSlot = new HashMap<>();

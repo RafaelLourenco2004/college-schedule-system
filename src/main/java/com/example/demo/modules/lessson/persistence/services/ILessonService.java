@@ -11,4 +11,5 @@ public interface ILessonService {
     Lesson create(Lesson lesson);
     List<Lesson> getAll();
     Optional<Lesson> getOne(LessonId id);
+    void delete(Lesson id);
 }
