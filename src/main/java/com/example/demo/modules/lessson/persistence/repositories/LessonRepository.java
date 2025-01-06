@@ -1,6 +1,5 @@
 package com.example.demo.modules.lessson.persistence.repositories;
 
-import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

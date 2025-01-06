@@ -17,5 +17,4 @@ public class LessonDateDto {
 
     private String endTime;
 
-    // private String duration;
 }

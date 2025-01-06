@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.entities.LessonTime;
@@ -26,15 +25,16 @@ public class Schedule {
             throw new InvalidAttributeValueException("The times provided is invalid.");
 
         Map<Weekday, Map<LocalTime, Lesson>> newSchedule = new HashMap<>();
-        Map<LocalTime, Lesson> scheduleSlot = new HashMap<>();
 
-        for (LessonTime lessonTime : LessonTime.values()) {
-            if (isWithinTimeRange(startClasses, endClasses, lessonTime))
-                scheduleSlot.put(LocalTime.parse(lessonTime.getTime()), null);
-        }
-
-        for (Weekday weekday : Weekday.values())
+        Map<LocalTime, Lesson> scheduleSlot;
+        for (Weekday weekday : Weekday.values()) {
+            scheduleSlot = new HashMap<>();
+            for (LessonTime lessonTime : LessonTime.values()) {
+                if (isWithinTimeRange(startClasses, endClasses, lessonTime))
+                    scheduleSlot.put(LocalTime.parse(lessonTime.getTime()), null);
+            }
             newSchedule.put(weekday, scheduleSlot);
+        }
 
         return newSchedule;
     }
@@ -61,20 +61,18 @@ public class Schedule {
         Map<LocalTime, Lesson> scheduleSlot;
         for (LessonDate lessonDate : lessonDates) {
             scheduleSlot = schedule.get(lessonDate.getWeekDay());
-            if (scheduleSlot.containsKey(lessonDate.getStartTime()))
-                if (scheduleSlot.get(lessonDate.getStartTime()) == null){
-                    scheduleSlot.put(lessonDate.getStartTime(), lesson);
-                    schedule.put(lessonDate.getWeekDay(), scheduleSlot);
-                }
-                else
-                    throw new EntityAlreadyExistsException(
-                            String.format("The schedule slot %s - %s is already filled",
-                                    lessonDate.getWeekDay().getWeekDay(), lessonDate.getStartTime().toString()));
-            else {
+
+            if (!scheduleSlot.containsKey(lessonDate.getStartTime()))
                 throw new InvalidAttributeValueException(
                         String.format("The lesson %s is not within the specified time range.",
                                 lesson.getId().toString()));
-            }
+
+            if (scheduleSlot.get(lessonDate.getStartTime()) != null)
+                throw new EntityAlreadyExistsException(
+                        String.format("Conflict: The schedule slot %s - %s is already filled",
+                                lessonDate.getWeekDay().getWeekDay(), lessonDate.getStartTime().toString()));
+
+            scheduleSlot.put(lessonDate.getStartTime(), lesson);
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.demo.modules.lessson.domain.usecases.class_schedule;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,14 +35,12 @@ public class SetClassSchedule {
         requiredLessons.stream().forEach((lesson) -> schedule.setLesson(lesson));
 
         List<Lesson> lessons = lessonGetService.getAll();
-        Collections.sort(lessons, (a, b) -> compareLessonPerWeeklyClasses(a, b));
-        lessons.forEach((lesson) -> System.out.printf("Lesson : %s", lesson.getSubject().getName()));
+        Collections.sort(lessons, Comparator.comparingInt(Lesson::getWeeklyClasses));
 
         for (Lesson lesson : lessons) {
             try {
                 schedule.setLesson(lesson);
             } catch (EntityAlreadyExistsException e) {
-                System.out.println("ENTITY ALREADY EXISTS");
                 continue;
             } catch (Exception e) {
                 throw new InvalidAttributeValueException("Something went wrong!");
@@ -49,9 +48,5 @@ public class SetClassSchedule {
         }
         List<Lesson> scheduledLessons = schedule.getLessons();
         return scheduledLessons;
-    }
-
-    private int compareLessonPerWeeklyClasses(Lesson a, Lesson b) {
-        return a.getWeeklyClasses() - b.getWeeklyClasses();
     }
 }

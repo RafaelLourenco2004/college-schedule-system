@@ -25,7 +25,6 @@ public enum LessonTime {
     LESSON_22_00("22:00"),
     LESSON_22_45("22:45");
     
-    // private static final int 
     
     private final String time;
 

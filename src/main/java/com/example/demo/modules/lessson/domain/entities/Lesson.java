@@ -2,7 +2,6 @@ package com.example.demo.modules.lessson.domain.entities;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -30,7 +29,6 @@ public class Lesson {
     @JoinColumn(name = "classroom_id", insertable = false, updatable = false)
     private Classroom classroom;
 
-    // @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @OneToMany()
     @JoinColumns({ @JoinColumn(name = "subject_id", referencedColumnName = "subject_id"),
             @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id") })

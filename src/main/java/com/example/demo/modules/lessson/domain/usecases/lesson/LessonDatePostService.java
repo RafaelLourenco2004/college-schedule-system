@@ -28,7 +28,6 @@ public class LessonDatePostService {
                 endTime,
                 weekDay);
 
-        // LessonDate newDate = lessonDateService.create(date);
         return date;
     }
 
