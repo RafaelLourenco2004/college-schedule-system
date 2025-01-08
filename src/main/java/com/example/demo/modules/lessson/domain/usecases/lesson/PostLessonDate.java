@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.usecases.lesson.date.LessonDateFactory;
-import com.example.demo.modules.lessson.persistence.services.ILessonDateService;
+import com.example.demo.modules.lessson.persistence.services.LessonDateService;
 
 @Service
-public class LessonDatePostService {
+public class PostLessonDate {
 
     @Autowired
-    private ILessonDateService lessonDateService;
+    private LessonDateService lessonDateService;
 
     @Autowired
     private LessonDateFactory dateFactory;

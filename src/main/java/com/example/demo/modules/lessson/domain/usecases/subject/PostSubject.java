@@ -6,19 +6,19 @@ import com.example.demo.modules.lessson.domain.entities.Course;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
-import com.example.demo.modules.lessson.domain.usecases.course.CourseGetService;
-import com.example.demo.modules.lessson.persistence.services.ISubjectService;
+import com.example.demo.modules.lessson.domain.usecases.course.GetCourse;
+import com.example.demo.modules.lessson.persistence.services.SubjectService;
 
 import java.util.UUID;
 
 @Service
-public class SubjectPostService {
+public class PostSubject {
 
-    private ISubjectService subjectService;
+    private SubjectService subjectService;
 
-    private CourseGetService courseGetService;
+    private GetCourse courseGetService;
 
-    public SubjectPostService(ISubjectService subjectService, CourseGetService courseGetService) {
+    public PostSubject(SubjectService subjectService, GetCourse courseGetService) {
         this.subjectService = subjectService;
         this.courseGetService = courseGetService;
     }

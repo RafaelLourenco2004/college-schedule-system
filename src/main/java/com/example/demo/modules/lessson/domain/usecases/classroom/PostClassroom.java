@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 import com.example.demo.modules.lessson.domain.entities.Classroom;
 import com.example.demo.modules.lessson.domain.entities.Course;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
-import com.example.demo.modules.lessson.domain.usecases.course.CourseGetService;
-import com.example.demo.modules.lessson.persistence.services.IClassroomService;
+import com.example.demo.modules.lessson.domain.usecases.course.GetCourse;
+import com.example.demo.modules.lessson.persistence.services.ClassroomService;
 
 @Service
-public class ClassroomPostService {
+public class PostClassroom {
 
-    private IClassroomService service;
+    private ClassroomService service;
 
-    private CourseGetService courseGetService;
+    private GetCourse courseGetService;
 
-    public ClassroomPostService(IClassroomService service, CourseGetService courseGetService) {
+    public PostClassroom(ClassroomService service, GetCourse courseGetService) {
         this.service = service;
         this.courseGetService = courseGetService;
     }

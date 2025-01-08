@@ -8,23 +8,23 @@ import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
-import com.example.demo.modules.lessson.domain.usecases.classroom.ClassroomGetService;
-import com.example.demo.modules.lessson.domain.usecases.subject.SubjectGetService;
-import com.example.demo.modules.lessson.persistence.services.ILessonService;
+import com.example.demo.modules.lessson.domain.usecases.classroom.GetClassroom;
+import com.example.demo.modules.lessson.domain.usecases.subject.GetSubject;
+import com.example.demo.modules.lessson.persistence.services.LessonService;
 
 import java.util.UUID;
 
 @Service
-public class LessonPostService {
+public class PostLesson {
 
     @Autowired
-    private SubjectGetService subjectService;
+    private GetSubject subjectService;
 
     @Autowired
-    private ClassroomGetService classroomService;
+    private GetClassroom classroomService;
 
     @Autowired
-    private ILessonService lessonService;
+    private LessonService lessonService;
 
 
     public Lesson getLesson(UUID subjectId, UUID classroomId)

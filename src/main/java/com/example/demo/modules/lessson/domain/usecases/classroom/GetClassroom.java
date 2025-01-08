@@ -4,17 +4,17 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.Classroom;
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
-import com.example.demo.modules.lessson.persistence.services.IClassroomService;
+import com.example.demo.modules.lessson.persistence.services.ClassroomService;
 
 import java.util.UUID;
 import java.util.List;
 
 @Service
-public class ClassroomGetService {
+public class GetClassroom {
 
-    private IClassroomService service;
+    private ClassroomService service;
 
-    public ClassroomGetService(IClassroomService service) {
+    public GetClassroom(ClassroomService service) {
         this.service = service;
     }
 

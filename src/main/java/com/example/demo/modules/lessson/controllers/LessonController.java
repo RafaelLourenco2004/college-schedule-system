@@ -19,40 +19,40 @@ import com.example.demo.modules.lessson.domain.dtos.LessonDto;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonDate;
 import com.example.demo.modules.lessson.domain.mappers.LessonMapper;
-import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDatePostService;
-import com.example.demo.modules.lessson.domain.usecases.lesson.LessonDeleteService;
-import com.example.demo.modules.lessson.domain.usecases.lesson.LessonGetService;
-import com.example.demo.modules.lessson.domain.usecases.lesson.LessonPostService;
+import com.example.demo.modules.lessson.domain.usecases.lesson.PostLessonDate;
+import com.example.demo.modules.lessson.domain.usecases.lesson.DeleteLesson;
+import com.example.demo.modules.lessson.domain.usecases.lesson.GetLesson;
+import com.example.demo.modules.lessson.domain.usecases.lesson.PostLesson;
 
 @RestController
 @RequestMapping("/lesson")
 public class LessonController {
 
     @Autowired
-    private LessonPostService lessonPostService;
+    private PostLesson postLesson;
 
     @Autowired
-    private LessonDatePostService lessonDatePostService;
+    private PostLessonDate postLessonDate;
 
     @Autowired
-    private LessonGetService lessonGetService;
+    private GetLesson getLesson;
 
     @Autowired
-    private LessonDeleteService lessonDeleteService;
+    private DeleteLesson deleteLesson;
         
     @PostMapping("/{subjectId}/{classroomId}")
     public ResponseEntity<LessonDto> create(@RequestBody LessonDatesDto datesDto,
             @PathVariable("subjectId") UUID subjectId, @PathVariable("classroomId") UUID classroomId) {
 
-        Lesson lesson = lessonPostService.getLesson(subjectId, classroomId);
+        Lesson lesson = postLesson.getLesson(subjectId, classroomId);
 
         List<LessonDate> dates = datesDto.getDates().stream()
-                .map((date) -> lessonDatePostService.getLessonDate(subjectId, classroomId, date.getStartTime(), 
+                .map((date) -> postLessonDate.getLessonDate(subjectId, classroomId, date.getStartTime(), 
                         date.getEndTime(), date.getWeekday()))
                 .toList();
                 
-        Lesson newLesson = lessonPostService.createLesson(lesson);
-        dates.stream().forEach((date) -> lessonDatePostService.create(date) );
+        Lesson newLesson = postLesson.createLesson(lesson);
+        dates.stream().forEach((date) -> postLessonDate.create(date) );
         newLesson.setDates(dates);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(LessonMapper.toDto(newLesson));
@@ -60,7 +60,7 @@ public class LessonController {
 
     @GetMapping()
     public ResponseEntity<List<LessonDto>> getAll(){
-        List<Lesson> lessons = lessonGetService.getAll();
+        List<Lesson> lessons = getLesson.getAll();
         List<LessonDto> dtos = lessons.stream()
                 .map((lesson) -> LessonMapper.toDto(lesson))
                 .toList();
@@ -69,7 +69,7 @@ public class LessonController {
 
     @DeleteMapping("/{subjectId}/{classroomId}")
     public ResponseEntity<String> delete(@PathVariable UUID subjectId, @PathVariable UUID classroomId){
-        lessonDeleteService.delete(subjectId, classroomId);
+        deleteLesson.delete(subjectId, classroomId);
         return ResponseEntity.status(HttpStatus.OK).body("");
     }
 

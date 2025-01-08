@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonId;
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
-import com.example.demo.modules.lessson.persistence.services.ILessonService;
+import com.example.demo.modules.lessson.persistence.services.LessonService;
 
 @Service
-public class LessonGetService {
+public class GetLesson {
 
     @Autowired
-    private ILessonService lessonService;
+    private LessonService lessonService;
 
     public List<Lesson> getAll() {
         return lessonService.getAll();

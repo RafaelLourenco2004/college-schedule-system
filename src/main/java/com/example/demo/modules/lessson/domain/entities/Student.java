@@ -34,21 +34,33 @@ public class Student {
 
     @ManyToMany
     @JoinTable(
+        name = "subject_graduated_students",
         joinColumns = @JoinColumn(name = "student_id"), 
         inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
-    private List<Subject> finishedSubjects;
+    private List<Subject> completedSubjects;
+
+    @ManyToMany(mappedBy = "enrolledStudents")
+    private List<Lesson> lessons;
 
     public Student(String id, String name, Course course){
         this.id = id;
         this.name = name;
         this.course = course;
-        this.finishedSubjects = new ArrayList<>();
+        this.completedSubjects = new ArrayList<>();
 
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isSubjectCompleted(Subject subject){
+        return completedSubjects.contains(subject);
+    }
+
+    public void setlessons(List<Lesson> lessons){
+        this.lessons = lessons;
     }
 
 }

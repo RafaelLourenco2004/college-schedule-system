@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.NotFoundException;
-import com.example.demo.modules.lessson.persistence.services.ISubjectService;
+import com.example.demo.modules.lessson.persistence.services.SubjectService;
 
 @Service
-public class SubjectGetService {
+public class GetSubject {
     
     @Autowired
-    private ISubjectService subjectService;
+    private SubjectService subjectService;
 
     public List<Subject> getAll(){
         return subjectService.getAll();

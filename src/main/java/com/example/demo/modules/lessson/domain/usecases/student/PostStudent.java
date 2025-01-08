@@ -9,17 +9,17 @@ import com.example.demo.modules.lessson.domain.entities.Course;
 import com.example.demo.modules.lessson.domain.entities.Student;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
-import com.example.demo.modules.lessson.domain.usecases.course.CourseGetService;
-import com.example.demo.modules.lessson.persistence.services.IStudentService;
+import com.example.demo.modules.lessson.domain.usecases.course.GetCourse;
+import com.example.demo.modules.lessson.persistence.services.StudentService;
 
 @Service
-public class StudentPostService {
+public class PostStudent {
 
     @Autowired
-    private IStudentService studentService;
+    private StudentService studentService;
 
     @Autowired
-    private CourseGetService courseService;
+    private GetCourse courseService;
 
     private final String idErrorMessage = "The id field must abide the following pattern:\n\n" +
             "- contains at least 1 uppercase letter\n" +

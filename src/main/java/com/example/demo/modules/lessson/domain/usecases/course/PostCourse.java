@@ -4,14 +4,14 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.Course;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
-import com.example.demo.modules.lessson.persistence.services.ICourseService;
+import com.example.demo.modules.lessson.persistence.services.CourseService;
 
 @Service
-public class CoursePostService {
+public class PostCourse {
 
-    private ICourseService courseService;
+    private CourseService courseService;
 
-    public CoursePostService(ICourseService courseService) {
+    public PostCourse(CourseService courseService) {
         this.courseService = courseService;
     }
 

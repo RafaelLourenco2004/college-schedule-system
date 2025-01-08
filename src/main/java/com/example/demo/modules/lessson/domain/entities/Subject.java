@@ -1,5 +1,6 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.Set;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
@@ -10,6 +11,8 @@ import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -38,6 +41,10 @@ public class Subject {
     @Convert(converter = SemesterConverter.class)
     private Semester semester;
 
+    @ManyToMany
+    @JoinTable(name = "subject_dependency", joinColumns = @JoinColumn(name = "subjec_id"), inverseJoinColumns = @JoinColumn(name = "required_subject_id"))
+    private Set<Subject> dependencies;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -58,4 +65,13 @@ public class Subject {
         this.semester = semester;
     }
 
+    public boolean isThereDependecies() {
+        return !dependencies.isEmpty();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Subject subject = (Subject) o;
+        return id.equals(subject.getId());
+    }
 }

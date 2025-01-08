@@ -14,13 +14,13 @@ import com.example.demo.modules.lessson.domain.entities.LessonId;
 import com.example.demo.modules.lessson.domain.entities.Student;
 import com.example.demo.modules.lessson.domain.exceptions.EntityAlreadyExistsException;
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
-import com.example.demo.modules.lessson.domain.usecases.lesson.LessonGetService;
+import com.example.demo.modules.lessson.domain.usecases.lesson.GetLesson;
 
 @Service
 public class SetClassSchedule {
 
     @Autowired
-    private LessonGetService lessonGetService;
+    private GetLesson lessonGetService;
 
     private Schedule schedule;
 

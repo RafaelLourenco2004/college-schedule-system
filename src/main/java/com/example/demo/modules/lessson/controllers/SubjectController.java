@@ -16,30 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.modules.lessson.domain.dtos.SubjectDto;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.mappers.SubjectMapper;
-import com.example.demo.modules.lessson.domain.usecases.subject.SubjectPostService;
-import com.example.demo.modules.lessson.domain.usecases.subject.SubjectGetService;
+import com.example.demo.modules.lessson.domain.usecases.subject.PostSubject;
+import com.example.demo.modules.lessson.domain.usecases.subject.GetSubject;
 
 @RestController
 @RequestMapping("/subject")
 public class SubjectController {
 
     @Autowired
-    private SubjectPostService postService;
+    private PostSubject postSubject;
 
     @Autowired
-    private SubjectGetService getService;
+    private GetSubject getSubject;
 
     @PostMapping("/{courseId}")
     public ResponseEntity<SubjectDto> create(@RequestBody SubjectDto dto,
             @PathVariable UUID courseId) throws Exception {
         Subject subject = SubjectMapper.toSubject(dto);
-        Subject newSubject = postService.create(subject, courseId);
+        Subject newSubject = postSubject.create(subject, courseId);
         return ResponseEntity.status(HttpStatus.CREATED).body(SubjectMapper.toDto(newSubject));
     }
     
     @GetMapping()
     public ResponseEntity<List<SubjectDto>> getAll() {
-        List<Subject> subjects = getService.getAll();
+        List<Subject> subjects = getSubject.getAll();
         List<SubjectDto> dtos = subjects.stream()
                 .map((subject) -> SubjectMapper.toDto(subject))
                 .toList();
@@ -48,7 +48,7 @@ public class SubjectController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SubjectDto> getOne(@PathVariable("id") UUID id) {
-        Subject subject = getService.getOne(id);
+        Subject subject = getSubject.getOne(id);
         return ResponseEntity.status(HttpStatus.OK).body(SubjectMapper.toDto(subject));
     }
 

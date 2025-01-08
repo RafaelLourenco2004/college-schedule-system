@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.modules.lessson.domain.dtos.ClassroomDto;
 import com.example.demo.modules.lessson.domain.entities.Classroom;
 import com.example.demo.modules.lessson.domain.mappers.ClassroomMapper;
-import com.example.demo.modules.lessson.domain.usecases.classroom.ClassroomGetService;
-import com.example.demo.modules.lessson.domain.usecases.classroom.ClassroomPostService;
+import com.example.demo.modules.lessson.domain.usecases.classroom.GetClassroom;
+import com.example.demo.modules.lessson.domain.usecases.classroom.PostClassroom;
 
 import java.util.UUID;
 import java.util.List;
@@ -24,27 +24,27 @@ import java.util.List;
 public class ClassroomController {
 
     @Autowired
-    private ClassroomPostService postService;
+    private PostClassroom postClassroom;
 
     @Autowired
-    private ClassroomGetService getService;
+    private GetClassroom getClassroom;
 
     @PostMapping("/{courseId}")
     public ResponseEntity<ClassroomDto> create(@RequestBody ClassroomDto dto, @PathVariable UUID courseId) {
         Classroom classroom = ClassroomMapper.toClassroom(dto);
-        Classroom newClassroom = postService.create(classroom, courseId);
+        Classroom newClassroom = postClassroom.create(classroom, courseId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ClassroomMapper.toDto(newClassroom));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ClassroomDto> getOne(@PathVariable UUID id) {
-        Classroom classroom = getService.getOne(id);
+        Classroom classroom = getClassroom.getOne(id);
         return ResponseEntity.status(HttpStatus.OK).body(ClassroomMapper.toDto(classroom));
     }
 
     @GetMapping()
     public ResponseEntity<List<ClassroomDto>> getAll() {
-        List<Classroom> classrooms = getService.getAll();
+        List<Classroom> classrooms = getClassroom.getAll();
         List<ClassroomDto> dtos = classrooms.stream()
                 .map((classroom) -> ClassroomMapper.toDto(classroom))
                 .toList();
