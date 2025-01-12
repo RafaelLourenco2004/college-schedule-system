@@ -43,4 +43,14 @@ public class SubjectServiceImpl implements SubjectService {
         return repository.findById(id);
     }
 
+    @Override
+    public Subject update(Subject subject) {
+        return repository.update(
+                subject.getId(),
+                subject.getName(),
+                subject.getSemester().getSemester(),
+                subject.getCredit(),
+                subject.getCourse().getId());
+    }
+
 }

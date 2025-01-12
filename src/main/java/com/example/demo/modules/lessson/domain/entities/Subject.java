@@ -1,11 +1,13 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 import com.example.demo.modules.lessson.persistence.converters.SemesterConverter;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -17,10 +19,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+// @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "subject", schema = "lesson", catalog = "lesson")
@@ -41,9 +42,20 @@ public class Subject {
     @Convert(converter = SemesterConverter.class)
     private Semester semester;
 
-    @ManyToMany
-    @JoinTable(name = "subject_dependency", joinColumns = @JoinColumn(name = "subjec_id"), inverseJoinColumns = @JoinColumn(name = "required_subject_id"))
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "subject_dependency", schema = "lesson", joinColumns = @JoinColumn(name = "subject_id"), 
+        inverseJoinColumns = @JoinColumn(name = "required_subject_id")
+    )
     private Set<Subject> dependencies;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "dependencies")
+    private Set<Subject> dependents;
+
+    public Subject(){
+        dependencies = new HashSet<>();
+        dependents = new HashSet<>();
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -63,6 +75,14 @@ public class Subject {
         if (semester == null)
             throw new InvalidAttributeValueException("Semester must be between 1 and 8.");
         this.semester = semester;
+    }
+
+    public void addDependency(Subject dependency){
+        dependencies.add(dependency);
+    }
+
+    public void addDependent(Subject dependent){
+        dependents.add(dependent);
     }
 
     public boolean isThereDependecies() {

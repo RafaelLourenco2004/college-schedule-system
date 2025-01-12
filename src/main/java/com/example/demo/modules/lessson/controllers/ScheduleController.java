@@ -27,7 +27,7 @@ public class ScheduleController {
     public ResponseEntity<List<LessonDto>> setSchedule(@RequestBody ScheduleDto scheduleDto) {
         List<Lesson> schedule = setClassSchedule.setClassSchedule(
                 scheduleDto.getRequiredLessonIds(),
-                null, scheduleDto.getStartTime(),
+                scheduleDto.getStartTime(),
                 scheduleDto.getEndTime());
         List<LessonDto> dtos = schedule.stream().map((lesson) -> LessonMapper.toDto(lesson)).toList();
         return ResponseEntity.status(HttpStatus.CREATED).body(dtos);

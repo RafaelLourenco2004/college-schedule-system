@@ -32,11 +32,15 @@ public class SubjectController {
     @PostMapping("/{courseId}")
     public ResponseEntity<SubjectDto> create(@RequestBody SubjectDto dto,
             @PathVariable UUID courseId) throws Exception {
+
         Subject subject = SubjectMapper.toSubject(dto);
-        Subject newSubject = postSubject.create(subject, courseId);
+        List<UUID> dependenciesIds = dto.getDependencies().stream()
+                .map((dependency) -> dependency.getId()).toList();
+
+        Subject newSubject = postSubject.create(subject, dependenciesIds, courseId);
         return ResponseEntity.status(HttpStatus.CREATED).body(SubjectMapper.toDto(newSubject));
     }
-    
+
     @GetMapping()
     public ResponseEntity<List<SubjectDto>> getAll() {
         List<Subject> subjects = getSubject.getAll();

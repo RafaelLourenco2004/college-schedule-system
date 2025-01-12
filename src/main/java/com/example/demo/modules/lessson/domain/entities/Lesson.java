@@ -37,9 +37,7 @@ public class Lesson {
     private List<LessonDate> dates;
 
     @ManyToMany
-    @JoinTable(
-        name = "student_subject_enrollment",
-        joinColumns = {
+    @JoinTable(name = "student_subject_enrollment", schema = "lesson", joinColumns = {
             @JoinColumn(name = "subject_id", referencedColumnName = "subject_id"),
             @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id")
     }, inverseJoinColumns = @JoinColumn(name = "student_id"))
@@ -57,6 +55,10 @@ public class Lesson {
 
     public int getWeeklyClasses() {
         return dates.size();
+    }
+
+    public void addStudent(Student student) {
+        enrolledStudents.add(student);
     }
 
 }

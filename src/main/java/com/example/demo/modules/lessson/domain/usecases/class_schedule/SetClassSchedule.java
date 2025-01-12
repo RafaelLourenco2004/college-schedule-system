@@ -24,7 +24,7 @@ public class SetClassSchedule {
 
     private Schedule schedule;
 
-    public List<Lesson> setClassSchedule(List<LessonId> requiredLessonsId, Student student,
+    public List<Lesson> setClassSchedule(List<LessonId> requiredLessonsId,
             String startClasses, String endClasses) {
 
         schedule = new Schedule(startClasses, endClasses);
