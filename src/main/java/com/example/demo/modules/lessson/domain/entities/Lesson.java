@@ -1,5 +1,6 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.Collection;
 import java.util.List;
 
 import jakarta.persistence.EmbeddedId;
@@ -36,12 +37,12 @@ public class Lesson {
             @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id") })
     private List<LessonDate> dates;
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(name = "student_subject_enrollment", schema = "lesson", joinColumns = {
             @JoinColumn(name = "subject_id", referencedColumnName = "subject_id"),
             @JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id")
     }, inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> enrolledStudents;
+    private Collection<Student> enrolledStudents;
 
     public Lesson(Subject subject, Classroom classroom) {
         this.subject = subject;

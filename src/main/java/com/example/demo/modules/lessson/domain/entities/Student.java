@@ -1,7 +1,9 @@
 package com.example.demo.modules.lessson.domain.entities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,7 +43,7 @@ public class Student {
     private List<Subject> completedSubjects;
 
     @ManyToMany(mappedBy = "enrolledStudents")
-    private List<Lesson> lessons;
+    private Collection<Lesson> lessons;
 
     public Student(String id, String name, Course course){
         this.id = id;
@@ -59,8 +61,8 @@ public class Student {
         return completedSubjects.contains(subject);
     }
 
-    public void setlessons(List<Lesson> lessons){
-        this.lessons = lessons;
+    public void addLesson(Lesson lesson){
+        lessons.add(lesson);
     }
 
 }

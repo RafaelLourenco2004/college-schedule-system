@@ -20,10 +20,10 @@ import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonId;
 import com.example.demo.modules.lessson.domain.entities.Student;
 import com.example.demo.modules.lessson.domain.mappers.StudentMapper;
+import com.example.demo.modules.lessson.domain.usecases.enrollment.StudentEnrollment;
 import com.example.demo.modules.lessson.domain.usecases.lesson.GetLesson;
 import com.example.demo.modules.lessson.domain.usecases.student.GetStudent;
 import com.example.demo.modules.lessson.domain.usecases.student.PostStudent;
-import com.example.demo.modules.lessson.domain.usecases.student.UpdateStudent;
 
 @RestController
 @RequestMapping("/student")
@@ -33,13 +33,13 @@ public class StudentController {
     private PostStudent postStudent;
 
     @Autowired
-    private UpdateStudent updateStudent;
-
-    @Autowired
     private GetStudent getStudent;
 
     @Autowired
     private GetLesson getLesson;
+
+    @Autowired
+    private StudentEnrollment studentEnrollment;
 
     @PostMapping("/{courseId}")
     public ResponseEntity<StudentDto> create(@RequestBody StudentDto dto,
@@ -55,7 +55,8 @@ public class StudentController {
                 .map((lessonId) -> getLesson.getOne(lessonId))
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        Student student = updateStudent.postSchedule(studentId, lessons);
+        // Student student = updateStudent.postSchedule(studentId, lessons);
+        Student student = studentEnrollment.enrollStudent(studentId, lessons);
         return ResponseEntity.status(HttpStatus.OK).body(StudentMapper.toDto(student));
     }
 

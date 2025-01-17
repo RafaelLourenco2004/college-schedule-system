@@ -1,7 +1,7 @@
 package com.example.demo.modules.lessson.domain.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
@@ -47,10 +47,10 @@ public class Subject {
         name = "subject_dependency", schema = "lesson", joinColumns = @JoinColumn(name = "subject_id"), 
         inverseJoinColumns = @JoinColumn(name = "required_subject_id")
     )
-    private Set<Subject> dependencies;
+    private Collection<Subject> dependencies;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "dependencies")
-    private Set<Subject> dependents;
+    private Collection<Subject> dependents;
 
     public Subject(){
         dependencies = new HashSet<>();

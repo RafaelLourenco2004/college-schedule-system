@@ -12,7 +12,10 @@ import com.example.demo.modules.lessson.domain.usecases.classroom.GetClassroom;
 import com.example.demo.modules.lessson.domain.usecases.subject.GetSubject;
 import com.example.demo.modules.lessson.persistence.services.LessonService;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PostLesson {
@@ -25,7 +28,6 @@ public class PostLesson {
 
     @Autowired
     private LessonService lessonService;
-
 
     public Lesson getLesson(UUID subjectId, UUID classroomId)
             throws NotFoundException, InvalidAttributeValueException {
@@ -40,7 +42,13 @@ public class PostLesson {
         return lesson;
     }
 
-    public Lesson createLesson(Lesson lesson){
+    public Collection<Lesson> createLessons(Collection<Lesson> lessons) {
+        return lessons.stream()
+                .map((lesson) -> createLesson(lesson))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public Lesson createLesson(Lesson lesson) {
         return lessonService.create(lesson);
     }
 

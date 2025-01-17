@@ -14,18 +14,18 @@ import com.example.demo.modules.lessson.domain.dtos.LessonDto;
 import com.example.demo.modules.lessson.domain.dtos.ScheduleDto;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.mappers.LessonMapper;
-import com.example.demo.modules.lessson.domain.usecases.class_schedule.SetClassSchedule;
+import com.example.demo.modules.lessson.domain.usecases.class_schedule.ScheduleSetUp;
 
 @RestController
 @RequestMapping("/schedule")
 public class ScheduleController {
 
     @Autowired
-    private SetClassSchedule setClassSchedule;
+    private ScheduleSetUp setClassSchedule;
 
     @PostMapping
     public ResponseEntity<List<LessonDto>> setSchedule(@RequestBody ScheduleDto scheduleDto) {
-        List<Lesson> schedule = setClassSchedule.setClassSchedule(
+        List<Lesson> schedule = setClassSchedule.setSchedule(
                 scheduleDto.getRequiredLessonIds(),
                 scheduleDto.getStartTime(),
                 scheduleDto.getEndTime());

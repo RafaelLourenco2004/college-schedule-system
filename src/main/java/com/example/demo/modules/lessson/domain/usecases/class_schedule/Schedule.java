@@ -39,23 +39,7 @@ public class Schedule {
         return newSchedule;
     }
 
-    private boolean isWithinTimeRange(LessonTime startTime, LessonTime endTime, LessonTime time) {
-        return !isEarlier(startTime, time) && !isLater(endTime, time);
-    }
-
-    private boolean isEarlier(LessonTime time1, LessonTime time2) {
-        LocalTime localTime1 = LocalTime.parse(time1.getTime());
-        LocalTime localTime2 = LocalTime.parse(time2.getTime());
-        return localTime2.isBefore(localTime1);
-    }
-
-    private boolean isLater(LessonTime time1, LessonTime time2) {
-        LocalTime localTime1 = LocalTime.parse(time1.getTime());
-        LocalTime localTime2 = LocalTime.parse(time2.getTime());
-        return localTime2.isAfter(localTime1);
-    }
-
-    public void setLesson(Lesson lesson) {
+    public void scheduleLesson(Lesson lesson) {
         List<LessonDate> lessonDates = lesson.getDates();
 
         Map<LocalTime, Lesson> scheduleSlot;
@@ -76,6 +60,15 @@ public class Schedule {
         }
     }
 
+    public void unscheduleLesson(Lesson lesson) {
+        List<LessonDate> dates = lesson.getDates();
+        Map<LocalTime, Lesson> scheduleSlot;
+        for (LessonDate date : dates) {
+            scheduleSlot = schedule.get(date.getWeekDay());
+            scheduleSlot.put(date.getStartTime(), null);
+        }
+    }
+
     public List<Lesson> getLessons() {
         List<Lesson> scheduledLessons = schedule.values().stream()
                 .flatMap((value) -> value.values().stream())
@@ -84,4 +77,21 @@ public class Schedule {
                 .toList();
         return scheduledLessons;
     }
+
+    private boolean isWithinTimeRange(LessonTime startTime, LessonTime endTime, LessonTime time) {
+        return !isEarlier(startTime, time) && !isLater(endTime, time);
+    }
+
+    private boolean isEarlier(LessonTime time1, LessonTime time2) {
+        LocalTime localTime1 = LocalTime.parse(time1.getTime());
+        LocalTime localTime2 = LocalTime.parse(time2.getTime());
+        return localTime2.isBefore(localTime1);
+    }
+
+    private boolean isLater(LessonTime time1, LessonTime time2) {
+        LocalTime localTime1 = LocalTime.parse(time1.getTime());
+        LocalTime localTime2 = LocalTime.parse(time2.getTime());
+        return localTime2.isAfter(localTime1);
+    }
+
 }
