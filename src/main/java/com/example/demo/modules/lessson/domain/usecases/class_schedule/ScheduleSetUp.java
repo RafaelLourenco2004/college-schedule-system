@@ -1,7 +1,6 @@
 package com.example.demo.modules.lessson.domain.usecases.class_schedule;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -59,22 +58,22 @@ public class ScheduleSetUp {
 
     // }
 
-    private int set(List<Lesson> lessons, int j, int max) throws InvalidAttributeValueException {
-        if (j == lessons.size())
-            return max;
+    // private int set(List<Lesson> lessons, int j, int max) throws InvalidAttributeValueException {
+    //     if (j == lessons.size())
+    //         return max;
 
-        int maxScheduleLessons = max;
-        int temp = 0;
-        for (int i = j; i < lessons.size(); i++) {
-            try {
-                schedule.scheduleLesson(lessons.get(i));
-                temp = set(lessons, j + 1, max + 1);
-                maxScheduleLessons = temp > maxScheduleLessons ? temp : maxScheduleLessons;
-                schedule.unscheduleLesson(lessons.get(i));
-            } catch (EntityAlreadyExistsException e) {
-                continue;
-            }
-        }
-        return maxScheduleLessons;
-    }
+    //     int maxScheduleLessons = max;
+    //     int temp = 0;
+    //     for (int i = j; i < lessons.size(); i++) {
+    //         try {
+    //             schedule.scheduleLesson(lessons.get(i));
+    //             temp = set(lessons, j + 1, max + 1);
+    //             maxScheduleLessons = temp > maxScheduleLessons ? temp : maxScheduleLessons;
+    //             schedule.unscheduleLesson(lessons.get(i));
+    //         } catch (EntityAlreadyExistsException e) {
+    //             continue;
+    //         }
+    //     }
+    //     return maxScheduleLessons;
+    // }
 }
