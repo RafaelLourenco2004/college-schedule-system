@@ -41,4 +41,11 @@ public class LessonServiceImpl implements LessonService {
         dates.stream().forEach((date) -> lessonDateRepository.delete(date));
         repository.deleteById(lesson.getId());
     }
+
+    // @Override
+    // public List<Lesson> getAllLessonsWithinTimeRange(String start, String time) {
+    //     List<Lesson> lessons = getAll();
+        
+
+    // }
 }

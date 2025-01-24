@@ -62,4 +62,15 @@ public class Lesson {
         enrolledStudents.add(student);
     }
 
+    public boolean isThereOverlap(Lesson lesson) {
+        List<LessonDate> lessonDates = lesson.getDates();
+        for (LessonDate date : dates) {
+            for (LessonDate lessonDate : lessonDates) {
+                if (date.equals(lessonDate))
+                    return true;
+            }
+        }
+        return false;
+    }
+
 }

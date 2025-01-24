@@ -12,4 +12,5 @@ public interface LessonService {
     List<Lesson> getAll();
     Optional<Lesson> getOne(LessonId id);
     void delete(Lesson id);
+    // List<Lesson> getAllLessonsWithinTimeRange(String start, String time);
 }

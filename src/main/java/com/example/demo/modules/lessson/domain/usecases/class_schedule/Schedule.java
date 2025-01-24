@@ -78,6 +78,18 @@ public class Schedule {
         return scheduledLessons;
     }
 
+    public boolean isTimeSlotsAvailable(Lesson lesson) {
+        List<LessonDate> dates = lesson.getDates();
+
+        Map<LocalTime, Lesson> timeSlot;
+        for (LessonDate date : dates) {
+            timeSlot = schedule.get(date.getWeekDay());
+            if (timeSlot.get(date.getStartTime()) != null)
+                return false;
+        }
+        return true;
+    }
+
     private boolean isWithinTimeRange(LessonTime startTime, LessonTime endTime, LessonTime time) {
         return !isEarlier(startTime, time) && !isLater(endTime, time);
     }

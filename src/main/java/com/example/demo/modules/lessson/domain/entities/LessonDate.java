@@ -81,4 +81,14 @@ public class LessonDate {
         this.classroom_id = classroomId;
     }
 
+    public boolean equals(LessonDate lessonDate) {
+        if (!weekday.equals(lessonDate.getWeekDay()))
+            return false;
+        if (!startTime.equals(lessonDate.getStartTime()))
+            return false;
+        if (!endTime.equals(lessonDate.getEndTime()))
+            return false;
+        return true;
+    }
+
 }

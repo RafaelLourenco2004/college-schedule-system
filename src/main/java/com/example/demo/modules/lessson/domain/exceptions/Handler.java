@@ -32,4 +32,9 @@ public class Handler {
     public ResponseEntity<String> handleMissinfSubjectDependencyException(MissingSubjectDependencyException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
+    @ExceptionHandler({ ScheduleOverlapException.class })
+    public ResponseEntity<String> handleScheduleOverlapException(ScheduleOverlapException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }
