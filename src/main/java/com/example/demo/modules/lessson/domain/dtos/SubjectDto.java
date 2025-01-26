@@ -31,5 +31,9 @@ public class SubjectDto {
     @JsonProperty(access = Access.READ_ONLY)
     private CourseDto course;
     
+    @JsonProperty(access = Access.READ_ONLY)
     private List<SubjectDto> dependencies;
+    
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private List<UUID> dependenciesId;
 }

@@ -5,8 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.example.demo.modules.lessson.domain.entities.Subject;
+import com.example.demo.modules.lessson.persistence.repositories.CoustomSubjectRepository;
 
-public interface SubjectService {
+public interface SubjectService extends CoustomSubjectRepository{
     
     Subject create(Subject subject);
     Subject update(Subject subject);

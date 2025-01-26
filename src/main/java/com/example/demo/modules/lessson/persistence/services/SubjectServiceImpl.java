@@ -10,7 +10,7 @@ import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.persistence.repositories.SubjectRepository;
 
 @Service
-public class SubjectServiceImpl implements SubjectService {
+public class SubjectServiceImpl extends SubjectPersistanceContextService implements SubjectService {
 
     private SubjectRepository repository;
 

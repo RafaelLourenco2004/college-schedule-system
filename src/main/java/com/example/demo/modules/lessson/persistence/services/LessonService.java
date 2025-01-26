@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonId;
+import com.example.demo.modules.lessson.domain.entities.LessonTime;
 
 public interface LessonService {
     
@@ -12,5 +13,5 @@ public interface LessonService {
     List<Lesson> getAll();
     Optional<Lesson> getOne(LessonId id);
     void delete(Lesson id);
-    // List<Lesson> getAllLessonsWithinTimeRange(String start, String time);
+    List<Lesson> getAllLessonsWithinTimeRange(LessonTime start, LessonTime time);
 }

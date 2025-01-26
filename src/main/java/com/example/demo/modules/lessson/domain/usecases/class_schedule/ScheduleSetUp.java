@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.LessonId;
+import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 import com.example.demo.modules.lessson.domain.exceptions.ScheduleOverlapException;
 import com.example.demo.modules.lessson.domain.usecases.lesson.GetLesson;
 
@@ -20,7 +21,7 @@ import com.example.demo.modules.lessson.domain.usecases.lesson.GetLesson;
 public class ScheduleSetUp {
 
     @Autowired
-    private GetLesson lessonGetService;
+    private GetLesson getLesson;
 
     public List<Lesson> setUpSchedule(List<LessonId> requiredLessonsId,
             String startClasses, String endClasses) {
@@ -30,7 +31,7 @@ public class ScheduleSetUp {
         PriorityQueue<List<Lesson>> queue = new PriorityQueue<>(
                 (list1, list2) -> Integer.compare(list2.size(), list1.size()));
 
-        List<Lesson> lessons = lessonGetService.getAll();
+        List<Lesson> lessons = getLessonWithinTimeRange(startClasses, endClasses);
         Set<Lesson> scheduledLessons = new HashSet<>();
 
         requiredLessons.stream().forEach((lesson) -> {
@@ -51,9 +52,16 @@ public class ScheduleSetUp {
             return new ArrayList<>();
 
         List<Lesson> requiredLessons = requiredLessonsId.stream()
-                .map((id) -> lessonGetService.getOne(id))
+                .map((id) -> getLesson.getOne(id))
                 .collect(Collectors.toCollection(ArrayList::new));
         return requiredLessons;
+    }
+
+    private List<Lesson> getLessonWithinTimeRange(String start, String end) {
+        if (start == null || end == null)
+            throw new InvalidAttributeValueException(
+                    "The time range for the classes must be provided");
+        return getLesson.getAllLessonsWithinTimeRange(start, end);
     }
 
     private void setUp(PriorityQueue<List<Lesson>> queue, List<Lesson> lessons,

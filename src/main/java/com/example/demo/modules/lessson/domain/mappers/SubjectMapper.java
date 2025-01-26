@@ -1,12 +1,15 @@
 package com.example.demo.modules.lessson.domain.mappers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.demo.modules.lessson.domain.dtos.SubjectDto;
 import com.example.demo.modules.lessson.domain.entities.Semester;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.InvalidAttributeValueException;
 import com.example.demo.modules.lessson.domain.exceptions.MissingFieldException;
-
 
 public class SubjectMapper {
 
@@ -31,5 +34,12 @@ public class SubjectMapper {
         dto.setSemester(subject.getSemester().getSemester());
         dto.setCourse(CourseMapper.toDto(subject.getCourse()));
         return dto;
+    }
+
+    public static List<SubjectDto> allToDto(Collection<Subject> subjects) {
+        List<SubjectDto> dtos = subjects.stream()
+                .map((subject) -> toDto(subject))
+                .collect(Collectors.toCollection(ArrayList::new));
+        return dtos;
     }
 }

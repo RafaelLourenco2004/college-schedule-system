@@ -36,7 +36,7 @@ public class Subject {
     private Integer credit;
 
     @ManyToOne()
-    @JoinColumn(name = "courseId")
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @Convert(converter = SemesterConverter.class)
@@ -45,7 +45,7 @@ public class Subject {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name = "subject_dependency", schema = "lesson", joinColumns = @JoinColumn(name = "subject_id"), 
-        inverseJoinColumns = @JoinColumn(name = "required_subject_id")
+        inverseJoinColumns = @JoinColumn(name = "dependent_id")
     )
     private Collection<Subject> dependencies;
 
@@ -55,6 +55,7 @@ public class Subject {
     public Subject(){
         dependencies = new HashSet<>();
         dependents = new HashSet<>();
+        id = UUID.randomUUID();
     }
 
     public void setName(String name) {

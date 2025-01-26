@@ -27,63 +27,35 @@ public class PostSubject {
     @Autowired
     private GetCourse courseGetService;
 
-    @Autowired
-    private GetSubject getSubject;
-
-    // public PostSubject(SubjectService subjectService, GetCourse courseGetService)
-    // {
-    // this.subjectService = subjectService;
-    // this.courseGetService = courseGetService;
-    // }
-
-    @Transactional
-    public Subject create(Subject subject, List<UUID> dependencyIds, UUID courseId)
-            throws EntityAlreadyExistsException, NotFoundException {
-        throwIfNameAlreadyExists(subject.getName());
-
-        // setDependencies(subject, dependencyIds);
-
-        dependencyIds.stream().forEach((id) -> System.out.println(id.toString().toUpperCase()));
-        Set<Subject> dependencies = dependencyIds.stream().map((id) -> getSubject.getOne(id))
-                .collect(Collectors.toCollection(HashSet::new));
-
-        dependencies.stream().forEach((dependency) -> subject.addDependency(dependency));
-
-        Course course = courseGetService.getOne(courseId);
-        subject.setCourse(course);
-
-        Subject newSubject = subjectService.create(subject);
-
-        dependencies.stream().forEach((dependency) -> {
-            dependency.addDependent(newSubject);
-            subjectService.update(dependency);
-        });
-        return newSubject;
+    public PostSubject(SubjectService subjectService, GetCourse courseGetService) {
+        this.subjectService = subjectService;
+        this.courseGetService = courseGetService;
     }
 
-    // private void setDependencies(Subject subject, List<UUID> dependencyIds) {
-    //     if (dependencyIds == null)
-    //         return;
+    public void validateSubject(Subject subject, UUID courseId) {
+        throwIfNameAlreadyExists(subject.getName());
+        Course course = courseGetService.getOne(courseId);
+        subject.setCourse(course);
+        // Subject newSubject = subjectService.create(subject);
+    }
 
-    //     dependencyIds.stream().forEach((id) -> System.out.println(id.toString().toUpperCase()));
-    //     Set<Subject> dependencies = dependencyIds.stream().map((id) -> getSubject.getOne(id))
-    //             .collect(Collectors.toCollection(HashSet::new));
+    public Subject createSubject(Subject subject) {
+        return subjectService.create(subject);
+    }
 
-    //     dependencies.forEach((dependency) -> {
-    //         dependency.addDependent(subject);
-    //         subject.addDependency(dependency);
-    //     });
-    // }
+    public void persistSubject(Subject subject, UUID courseId) throws EntityAlreadyExistsException,
+            NotFoundException {
+        throwIfNameAlreadyExists(subject.getName());
+        Course course = courseGetService.getOne(courseId);
+        subject.setCourse(course);
+        // Subject newSubject = subjectService.create(subject);
+        // return newSubject;
+        subjectService.persistSubject(subject);
+    }
 
-    // public Subject create(Subject subject, UUID courseId) throws
-    // EntityAlreadyExistsException,
-    // NotFoundException {
-    // throwIfNameAlreadyExists(subject.getName());
-    // Course course = courseGetService.getOne(courseId);
-    // subject.setCourse(course);
-    // Subject newSubject = subjectService.create(subject);
-    // return newSubject;
-    // }
+    public void commitSubject() {
+        subjectService.flushChanges();
+    }
 
     private void throwIfNameAlreadyExists(String name) throws EntityAlreadyExistsException {
         if (subjectService.exists(name))
