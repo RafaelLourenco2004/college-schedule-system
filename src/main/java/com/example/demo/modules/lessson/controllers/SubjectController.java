@@ -40,34 +40,28 @@ public class SubjectController {
             @PathVariable UUID courseId) throws Exception {
 
         Subject subject = SubjectMapper.toSubject(dto);
-        // postSubject.persistSubject(subject, courseId);
         postSubject.validateSubject(subject, courseId);
 
+        List<Subject> dependecies = new ArrayList<>();
         if (dto.getDependenciesId() != null) {
-            List<Subject> dependecies = dto.getDependenciesId().stream()
+            dependecies = dto.getDependenciesId().stream()
                     .map((id) -> getSubject.getOne(id))
                     .collect(Collectors.toCollection(ArrayList::new));
-            subjectDependencyManager.addDependecies(subject, dependecies);
         }
+        Subject newSubject = postSubject.createSubject(subject);
+        subjectDependencyManager.addDependecies(newSubject, dependecies);
 
-        // postSubject.commitSubject();
-        postSubject.createSubject(subject);
+        SubjectDto newDto = SubjectMapper.toDto(subject);
+        List<SubjectDto> subjectDependecies = SubjectMapper.allToDto(subject.getDependencies());
+        newDto.setDependencies(subjectDependecies);
 
-        SubjectDto newSubject = SubjectMapper.toDto(subject);
-        List<SubjectDto> subjectDependecies = subject.getDependencies().stream()
-                .map((dependency) -> SubjectMapper.toDto(dependency))
-                .toList();
-        newSubject.setDependencies(subjectDependecies);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(newSubject);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newDto);
     }
 
     @GetMapping()
     public ResponseEntity<List<SubjectDto>> getAll() {
         List<Subject> subjects = getSubject.getAll();
-        // List<SubjectDto> dtos = subjects.stream()
-        // .map((subject) -> SubjectMapper.toDto(subject))
-        // .toList();
+
         List<SubjectDto> dtos = SubjectMapper.allToDto(subjects);
         for (int i = 0; i < subjects.size(); i++) {
             dtos.get(i).setDependencies(SubjectMapper.allToDto(subjects.get(i).getDependencies()));
@@ -78,7 +72,10 @@ public class SubjectController {
     @GetMapping("/{id}")
     public ResponseEntity<SubjectDto> getOne(@PathVariable("id") UUID id) {
         Subject subject = getSubject.getOne(id);
-        return ResponseEntity.status(HttpStatus.OK).body(SubjectMapper.toDto(subject));
+        SubjectDto dto = SubjectMapper.toDto(subject);
+        List<SubjectDto> dependencies = SubjectMapper.allToDto(subject.getDependencies());
+        dto.setDependencies(dependencies);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
 }

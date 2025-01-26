@@ -15,4 +15,8 @@ public class LessonDatesDto {
     
     private List<LessonDateDto> dates;
 
+    public boolean areThereDates(){
+        return dates.isEmpty();
+    }
+
 }

@@ -10,7 +10,7 @@ import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.persistence.repositories.SubjectRepository;
 
 @Service
-public class SubjectServiceImpl extends SubjectPersistanceContextService implements SubjectService {
+public class SubjectServiceImpl implements SubjectService {
 
     private SubjectRepository repository;
 
@@ -41,16 +41,6 @@ public class SubjectServiceImpl extends SubjectPersistanceContextService impleme
     @Override
     public Optional<Subject> getOne(UUID id) {
         return repository.findById(id);
-    }
-
-    @Override
-    public Subject update(Subject subject) {
-        return repository.update(
-                subject.getId(),
-                subject.getName(),
-                subject.getSemester().getSemester(),
-                subject.getCredit(),
-                subject.getCourse().getId());
     }
 
 }

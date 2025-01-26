@@ -15,8 +15,19 @@ public class EnrollmentRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private final String DELETE_ENROLLMENT_QUERY = "DELETE FROM lesson.student_subject_enrollment " +
+    private static final String INSERT_ENROLLMENT_QUERY = "INSERT INTO lesson.student_subject_enrollment " +
+            "(subject_id, classroom_id, student_id) VALUES (:subject_id, :classroom_id, :student_id)";
+
+    private static final String DELETE_ENROLLMENT_QUERY = "DELETE FROM lesson.student_subject_enrollment " +
             "WHERE subject_id = :subjectId AND classroom_id = :classroomId AND student_id = :studentId";
+
+    public void createEnrollment(UUID subject_id, UUID classroomId, String studenId) {
+        Query query = entityManager.createNativeQuery(INSERT_ENROLLMENT_QUERY);
+        query.setParameter("subject_id", subject_id);
+        query.setParameter("classroom_id", classroomId);
+        query.setParameter("student_id", studenId);
+        query.executeUpdate();
+    }
 
     @Transactional
     public void deleteEnrollment(UUID subjectId, UUID classroomId, String studentId) {

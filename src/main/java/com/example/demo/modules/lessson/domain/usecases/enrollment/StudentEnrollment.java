@@ -1,19 +1,16 @@
 package com.example.demo.modules.lessson.domain.usecases.enrollment;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.modules.lessson.domain.entities.Classroom;
 import com.example.demo.modules.lessson.domain.entities.Lesson;
 import com.example.demo.modules.lessson.domain.entities.Student;
 import com.example.demo.modules.lessson.domain.entities.Subject;
 import com.example.demo.modules.lessson.domain.exceptions.MissingSubjectDependencyException;
-import com.example.demo.modules.lessson.domain.usecases.lesson.PostLesson;
 import com.example.demo.modules.lessson.domain.usecases.student.GetStudent;
 import com.example.demo.modules.lessson.persistence.services.EnrollmentService;
-import com.example.demo.modules.lessson.persistence.services.StudentService;
 
 @Service
 public class StudentEnrollment {
@@ -22,15 +19,9 @@ public class StudentEnrollment {
     private EnrollmentService enrollmentService;
 
     @Autowired
-    private PostLesson postLesson;
-
-    @Autowired
-    private StudentService studentService;
-
-    @Autowired
     private GetStudent getStudent;
 
-    public Student enrollStudent(String studentId, Collection<Lesson> lessons) {
+    public Student enrollStudent(String studentId, List<Lesson> lessons) {
         Student student = getStudent.getOne(studentId);
 
         for (Lesson lesson : lessons) {
@@ -40,16 +31,11 @@ public class StudentEnrollment {
                         lesson.getSubject().getName()));
         }
 
-        deleteStudentPreviousEnrollments(student);
+        enrollmentService.deleteEnrollments(student.getLessons(), studentId);
+        enrollmentService.createEnrollments(lessons, studentId);
 
-        lessons.stream().forEach((lesson) -> {
-            student.addLesson(lesson);
-            lesson.addStudent(student);
-            postLesson.createLesson(lesson);
-        });
-        Student updatedStudent = studentService.create(student);
-        return updatedStudent;
-
+        lessons.stream().forEach((lesson) -> student.addLesson(lesson));
+        return student;
     }
 
     private boolean isThereMissingDependency(Lesson lesson, Student student) {
@@ -61,14 +47,6 @@ public class StudentEnrollment {
             }
         }
         return false;
-    }
-
-    private void deleteStudentPreviousEnrollments(Student student) {
-        student.getLessons().stream().forEach((lesson) -> {
-            Subject subject = lesson.getSubject();
-            Classroom classroom = lesson.getClassroom();
-            enrollmentService.deleteEnrollment(subject.getId(), classroom.getId(), student.getId());
-        });
     }
 
 }

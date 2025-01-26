@@ -17,12 +17,6 @@ public interface SubjectRepository extends JpaRepository<Subject, UUID> {
     Subject create(@Param("id") UUID id, @Param("name") String name, @Param("semester") String semester,
             @Param("credit") Integer credit, @Param("course_id") UUID courseId);
 
-    @Query(value = "UPDATE lesson.subject SET name = :name, semester = CAST(:semester AS lesson.semester), "+
-        "credit = :credit, course_id = :course_id WHERE subject_id = :id RETURNING *", 
-            nativeQuery = true)
-    Subject update(@Param("id") UUID id, @Param("name") String name, @Param("semester") String semester,
-            @Param("credit") Integer credit, @Param("course_id") UUID courseId);
-
     boolean existsByName(String name);
 
 }

@@ -21,7 +21,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-// @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "subject", schema = "lesson", catalog = "lesson")
@@ -44,8 +43,8 @@ public class Subject {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-        name = "subject_dependency", schema = "lesson", joinColumns = @JoinColumn(name = "subject_id"), 
-        inverseJoinColumns = @JoinColumn(name = "dependent_id")
+        name = "subject_dependency", schema = "lesson", joinColumns = @JoinColumn(name = "dependent_id"), 
+        inverseJoinColumns = @JoinColumn(name = "dependency_id")
     )
     private Collection<Subject> dependencies;
 
@@ -55,7 +54,6 @@ public class Subject {
     public Subject(){
         dependencies = new HashSet<>();
         dependents = new HashSet<>();
-        id = UUID.randomUUID();
     }
 
     public void setName(String name) {

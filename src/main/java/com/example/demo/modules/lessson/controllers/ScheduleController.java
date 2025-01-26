@@ -29,10 +29,7 @@ public class ScheduleController {
                 scheduleDto.getRequiredLessonIds(),
                 scheduleDto.getStartTime(),
                 scheduleDto.getEndTime());
-        // List<Lesson> schedule = setClassSchedule.setSchedule(
-        //         scheduleDto.getRequiredLessonIds(),
-        //         scheduleDto.getStartTime(),
-        //         scheduleDto.getEndTime());
+
         List<LessonDto> dtos = schedule.stream().map((lesson) -> LessonMapper.toDto(lesson)).toList();
         return ResponseEntity.status(HttpStatus.CREATED).body(dtos);
     }

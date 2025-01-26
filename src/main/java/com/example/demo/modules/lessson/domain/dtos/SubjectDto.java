@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SubjectDto {
     
-    // @JsonProperty(access = Access.READ_ONLY)
     private UUID id;
 
     private String name;
