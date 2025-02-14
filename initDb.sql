@@ -1,5 +1,6 @@
 CREATE SCHEMA lesson;
 
+--  criação das tabelas
 CREATE TABLE lesson.course (
     course_id UUID PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
@@ -81,9 +82,12 @@ CREATE TABLE lesson.subject_dependency (
     PRIMARY KEY (dependent_id, dependency_id)
 );
 
+
+-- criando um curso
 INSERT INTO lesson.course (course_id, name, total_credits, acronym_id) 
 VALUES ('b0d1a107-5dd0-48c9-a19e-bf93c53608e5', 'Ciencia da Computação', 200, 'CC');
 
+--criando os disciplinas
 INSERT INTO lesson.subject (subject_id, name, credit, semester, course_id)
 VALUES ('3b07f815-803c-4a1e-859a-676e1609923b', 'Matematica discreta I', 1, '1', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
 
@@ -203,3 +207,89 @@ VALUES ('6f81a312-8547-449f-8d4e-5f13f2a9c1e4', 'Trabalho de conclusão de curso
 
 INSERT INTO lesson.subject (subject_id, name, credit, semester, course_id)
 VALUES ('4e59d4a2-4151-47c2-93f4-654a1b2c3d45', 'Trabalho de conclusão de curso II', 2, '8', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+-- criando a depedencia entre as disciplinas
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('e2214f3d-6509-48f0-a132-cb1ffb97eebc', '5c57b674-b3ef-40e4-a4fa-e89be1826c72');
+
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('1c7fe57f-cb3d-4d5c-87f0-d9206d9dd9ad', '3b07f815-803c-4a1e-859a-676e1609923b');
+
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('e66cd7d8-4223-4924-bdc9-85911b9e5410', '6b3ff87e-eae6-4947-b121-1a359f8ab0d8');
+
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('89b296d8-6cce-4784-a40a-03082c25cd7f', '41c5e531-3766-41aa-b129-191cf4b15d04');
+
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('70ba8979-0767-4e43-9762-3ca7b8983f82', '565ffa32-2490-4ceb-b603-6e4727d961b9');
+
+INSERT INTO lesson.subject_dependency (dependent_id, dependency_id)
+VALUES ('4e59d4a2-4151-47c2-93f4-654a1b2c3d45', '6f81a312-8547-449f-8d4e-5f13f2a9c1e4');
+
+-- criando as turmas
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('6753b227-769f-4bcd-ba35-c9987c333bba', '01G', 40, '1', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('2eec3e1d-fa3e-4cf3-afa3-95d0adf2e463', '01D', 40, '1', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('fd1ff062-e4d6-47ad-a02c-0cba75e0f262', '02G', 40, '2', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('75b0e281-07b3-4ba4-9eb1-0f7e04ef5575', '03G', 40, '3', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('ce04e642-6a6e-441f-88ae-4001ff1b6b4f', '03D', 40, '3', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('98d6e21c-8364-4ce7-b8b8-e6c6440da916', '04G', 40, '4', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('0c9bdbce-8409-479e-918b-4824baa8420f', '05G', 40, '5', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('7298c9dd-6286-4240-bd5b-73f3a04ffaeb', '05D', 40, '5', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('d89f360b-c2b2-49b8-a457-8a49f504f5d5', '06G', 40, '6', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('90e21056-e725-4bfc-950f-d7a1e7d6b138', '07G', 40, '7', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('3aab5eea-9ecf-4f91-b1f1-306f33157e75', '08G', 40, '8', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('22fc9f8c-4662-431b-ae29-323aeaf4af28', '01N', 40, '1', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('9114de5d-6b48-410d-ad0a-a5449fe9946d', '01P', 40, '1', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('6d3f3838-da40-45da-b616-d4cac61a94d4', '02N', 40, '2', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('51d0e0b4-7639-4366-9ad0-5ce64c14ace6', '03N', 40, '3', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('cbfa50dc-76b4-4946-a10e-79319bf65155', '03P', 40, '3', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('47737e4a-1d56-457a-b89d-49b9f3600a94', '04N', 40, '4', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('cd2ed283-8c56-44c1-befe-9a3cf5738378', '05N', 40, '5', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('834ea7fa-6558-4957-bf3c-b1974d50a680', '05P', 40, '5', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('cc665ac5-861e-4af2-adf6-86b71732db91', '06N', 40, '6', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('6b484df1-a447-4711-ad51-39a2d42996db', '07N', 40, '7', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
+
+INSERT INTO lesson.classroom (classroom_id, name, capacity, semester, course_id)
+VALUES ('0e843c90-1a52-4f13-b41e-c6aa117f49d1', '08N', 40, '8', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');
