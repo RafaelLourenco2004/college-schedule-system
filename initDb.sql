@@ -62,7 +62,9 @@ CREATE TABLE lesson.lesson_date (
     week_day lesson.week_day NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
-    FOREIGN KEY (subject_id, classroom_id) REFERENCES lesson.lesson(subject_id, classroom_id)
+    FOREIGN KEY (subject_id) REFERENCES lesson.subject(subject_id),
+    FOREIGN KEY (classroom_id) REFERENCES lesson.classroom(classroom_id)
+    -- FOREIGN KEY (subject_id, classroom_id) REFERENCES lesson.lesson(subject_id, classroom_id)
 );
 
 CREATE TABLE lesson.student_subject_enrollment (
@@ -794,7 +796,7 @@ INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_d
 VALUES ('82873798-a516-4d6e-9cbf-9ff260e5047d', '512d2c00-246e-470b-80a6-bb4616615c79', '7298c9dd-6286-4240-bd5b-73f3a04ffaeb', 'thursday', '09:20', '10:10');
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
-VALUES ('bd439cec-4675-4563-aa8a-cc64804e12d', '512d2c00-246e-470b-80a6-bb4616615c79', '7298c9dd-6286-4240-bd5b-73f3a04ffaeb', 'thursday', '10:10', '11:00');
+VALUES ('bd439cec-4675-4563-aa8a-cc64804e12db', '512d2c00-246e-470b-80a6-bb4616615c79', '7298c9dd-6286-4240-bd5b-73f3a04ffaeb', 'thursday', '10:10', '11:00');
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
 VALUES ('b6c169bc-8c32-424e-a88f-5961926bc3b5', '512d2c00-246e-470b-80a6-bb4616615c79', '7298c9dd-6286-4240-bd5b-73f3a04ffaeb', 'friday', '07:30', '08:20');
@@ -1233,16 +1235,16 @@ VALUES ('5c4431a1-e31b-4145-a9b7-db318c3bcf2c', 'e66cd7d8-4223-4924-bdc9-85911b9
 
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
-VALUES ('f9bfe95c-6fc4-4d28-8c53-a14399f4553f', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '19:20', '20:10');
+VALUES ('f9bfe95c-6fc4-4d28-8c53-a14399f4553f', '96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '19:20', '20:10');
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
-VALUES ('1059c0ac-43d3-4848-b0a7-4075e11a9bf5', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '20:10', '21:00');
+VALUES ('1059c0ac-43d3-4848-b0a7-4075e11a9bf5', '96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '20:10', '21:00');
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
-VALUES ('634412ce-3751-4cfe-9475-71e163132a99', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '19:20', '20:10');
+VALUES ('634412ce-3751-4cfe-9475-71e163132a99', '96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '19:20', '20:10');
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
-VALUES ('fcd760fb-77e7-4124-9244-984db54fcc30', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '20:10', '21:00');
+VALUES ('fcd760fb-77e7-4124-9244-984db54fcc30', '96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '20:10', '21:00');
 
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
