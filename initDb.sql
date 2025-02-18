@@ -1210,3 +1210,295 @@ VALUES ('d782b128-ea26-4611-a1a0-8aebee824f46', '565ffa32-2490-4ceb-b603-6e4727d
 
 INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
 VALUES ('3e241083-0f72-4b7a-9669-c73103b7fc37', '565ffa32-2490-4ceb-b603-6e4727d961b9', 'cbfa50dc-76b4-4946-a10e-79319bf65155', 'friday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a8d27b9e-8bac-4264-a315-84b849de1a35', '1e6e62da-0c3f-4500-9e49-f9721ec79b17', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'saturday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('6174dbf5-338c-445f-b01e-97498f3d22b5', '1e6e62da-0c3f-4500-9e49-f9721ec79b17', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'saturday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('2dd75ecc-3370-4fbb-b54c-e06a7b06c8ea', 'e66cd7d8-4223-4924-bdc9-85911b9e5410', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'saturday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('634e7699-514e-4797-b98c-e63f776dd241', 'e66cd7d8-4223-4924-bdc9-85911b9e5410', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'saturday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('aad59c72-1d4a-4538-aec1-60adb54ed405', 'e66cd7d8-4223-4924-bdc9-85911b9e5410', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'thursday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('5c4431a1-e31b-4145-a9b7-db318c3bcf2c', 'e66cd7d8-4223-4924-bdc9-85911b9e5410', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'thursday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('f9bfe95c-6fc4-4d28-8c53-a14399f4553f', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('1059c0ac-43d3-4848-b0a7-4075e11a9bf5', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('634412ce-3751-4cfe-9475-71e163132a99', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('fcd760fb-77e7-4124-9244-984db54fcc30', 'e96b17e4b-0d92-4623-86c9-d04bc1221ad0', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('898f8bcd-4a0b-4782-ac07-fb19547e1a51', '70ba8979-0767-4e43-9762-3ca7b8983f82', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('986d7de7-e306-403a-8849-68f0ec6dfd84', '70ba8979-0767-4e43-9762-3ca7b8983f82', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'tuesday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cab613d3-d507-49b5-90d8-d91afe17802a', '70ba8979-0767-4e43-9762-3ca7b8983f82', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'wednesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('653682ef-cfb3-4cda-9044-89a66b294395', '70ba8979-0767-4e43-9762-3ca7b8983f82', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'wednesday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('64b0b9da-8a57-4c4d-bcba-5da2b8eb96ff', '89b296d8-6cce-4784-a40a-03082c25cd7f', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'wednesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a5cda5a8-3041-4e1d-bbaf-0023c186ff8d', '89b296d8-6cce-4784-a40a-03082c25cd7f', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'wednesday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('53a5fd0c-a8db-4819-b296-d495829c6c9a', '89b296d8-6cce-4784-a40a-03082c25cd7f', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'thursday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('60be3d32-ec3e-4b5e-9860-be69197fb5fa', '89b296d8-6cce-4784-a40a-03082c25cd7f', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'thursday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('5fc8df34-c536-48ef-a6f3-e45bd73d00dc', 'b0b6023f-3e95-44c4-985e-1dd372e35d0a', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('144b9f12-0718-4172-a387-8a0bea856f12', 'b0b6023f-3e95-44c4-985e-1dd372e35d0a', '47737e4a-1d56-457a-b89d-49b9f3600a94', 'friday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cd36e883-667e-4488-8549-3eaffe095c2f', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'saturday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('c33f3182-9cee-434a-a91e-836e74902635', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'saturday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('ba551a69-90f4-4190-843b-9c2e7cb6dc43', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'wednesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('55901a2b-8df8-4820-9ae4-0a9f373ed3bc', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'wednesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('93ff144a-a0c0-47fc-a2e0-63c64b6cbf15', '512d2c00-246e-470b-80a6-bb4616615c79', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'saturday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('336515ba-60fb-4d62-bcd6-c38eb106e20f', '512d2c00-246e-470b-80a6-bb4616615c79', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'saturday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('326097fb-06de-48d1-a8f6-0333cc3636ef', '512d2c00-246e-470b-80a6-bb4616615c79', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'friday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('53df0328-4010-4fd3-9173-7406bf57434f', '512d2c00-246e-470b-80a6-bb4616615c79', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'friday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('6715a420-125f-4560-97ca-0a1073a39feb', '56aa4c1c-61ea-466b-bd0d-8980b4ae25ce', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'tuesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('3c2e9976-d5aa-4dbb-97b5-d65762c69b47', '56aa4c1c-61ea-466b-bd0d-8980b4ae25ce', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'tuesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('f37c7bb5-30d4-40c2-ac28-e060017bfe10', '73284f3c-7cc6-475b-b610-3bc05b448895', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'tuesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('5279f7bb-cfe0-4577-9273-15aaa6dbc7e3', '73284f3c-7cc6-475b-b610-3bc05b448895', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'tuesday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('209f57e8-4254-4a3e-80fa-33e4a54bac7b', '73284f3c-7cc6-475b-b610-3bc05b448895', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'thursday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a8cd66a0-9948-4d75-80b2-28ad3b81edba', '73284f3c-7cc6-475b-b610-3bc05b448895', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'thursday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('78bd2ca7-d350-4741-9922-08b10f193385', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'wednesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('c647e264-58fd-49ba-ab08-482028e2e204', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'wednesday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('603f2006-2e48-4f62-acdb-864d933b1549', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'thursday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('bac2d0f8-f2f5-4f84-ad90-72011e0649a9', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'thursday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('9b9af827-bba3-4572-942e-d1e6247c5256', '288d4f0d-edaa-457f-b887-212edae5701b', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'friday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('17a80893-639d-44bf-a78b-49e70e6263b3', '288d4f0d-edaa-457f-b887-212edae5701b', 'cd2ed283-8c56-44c1-befe-9a3cf5738378', 'friday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('81eab7ca-ac2e-4177-ac88-453ceaaeb39d', '73284f3c-7cc6-475b-b610-3bc05b448895', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'saturday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('d04a53e2-c7c4-4a0d-a935-f6ff91c7007a', '73284f3c-7cc6-475b-b610-3bc05b448895', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'saturday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('4f0161fe-8f5f-486c-a393-3ee99c3cac8c', '73284f3c-7cc6-475b-b610-3bc05b448895', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'thursday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('165b8207-ea43-4d02-9d30-f73e3adc54c3', '73284f3c-7cc6-475b-b610-3bc05b448895', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'thursday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('2530ca1e-6fe0-4945-b5c9-9b4a01d656ed', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'saturday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('13bcca2d-e3c2-478b-a62e-dc075073abdc', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'saturday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('8ece92fa-5021-48e5-b287-6ed67385146c', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'wednesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('66a449d3-c5fb-4b57-a82c-e3b6aff9ee3a', '1e3a5e0c-6cbe-4dfb-8269-a475f214dfdc', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'wednesday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('ce015a50-6ba0-42a4-afd2-021c19a2fa23', '288d4f0d-edaa-457f-b887-212edae5701b', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'tuesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('7332e0ef-9268-405b-a408-885ec7fea9fb', '288d4f0d-edaa-457f-b887-212edae5701b', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'tuesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a3690f05-b3bc-4ed5-8765-2578b3aed504', '512d2c00-246e-470b-80a6-bb4616615c79', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'tuesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('2b7cd141-dca8-4bbf-8c67-b13309c30580', '512d2c00-246e-470b-80a6-bb4616615c79', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'tuesday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a405dea9-d7b2-4798-be67-be7c9ff76ae9', '512d2c00-246e-470b-80a6-bb4616615c79', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'thursday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('b0a06b0d-b823-4c1e-be35-33bb326c20d7', '512d2c00-246e-470b-80a6-bb4616615c79', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'thursday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cb6c61e5-33be-422c-87ec-11237c756c9d', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'wednesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('81e95a3a-1948-4982-abbb-91ba23bd64a7', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'wednesday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a539334a-1564-4222-82fb-a7d96bd2fe43', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'friday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('eb41353c-780e-41e6-abbf-5cb42cd36907', '63ff2fbb-65ea-465d-acc4-5c07dc1ae563', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'friday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('db01a621-2119-471b-a45d-f6f90ace8e6e', '56aa4c1c-61ea-466b-bd0d-8980b4ae25ce', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'friday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('03b5624b-5ec2-47f8-8aa8-460753d4cdc0', '56aa4c1c-61ea-466b-bd0d-8980b4ae25ce', '834ea7fa-6558-4957-bf3c-b1974d50a680', 'friday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('6655d424-1bb4-46d9-b9dc-4ddd4a032ee8', '007c2e2d-249c-42f7-a67c-1645eac004b8', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'saturday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('efdcfaea-fe9e-4022-83de-280e1c90cde2', '007c2e2d-249c-42f7-a67c-1645eac004b8', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'saturday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a3169125-831c-4515-9b3f-9ac101d1f8a4', '007c2e2d-249c-42f7-a67c-1645eac004b8', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'wednesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('849ef793-f8a3-4b44-8e70-89403430a23b', '007c2e2d-249c-42f7-a67c-1645eac004b8', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'wednesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('07e2b8d8-39f4-40d1-b5b0-62693b3ca5f6', 'e0d48d2c-e16a-4fdb-8f15-614425060520', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'saturday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('1f2409da-246c-4cf3-8bae-84cd9d11962b', 'e0d48d2c-e16a-4fdb-8f15-614425060520', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'saturday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('b47973c2-a482-4d3b-9c25-6f8439bb69be', 'd40158a7-5290-4b3a-b52b-f3ae282a33bc', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'tuesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('b3b851f2-47e8-46f4-931f-3b9ee76e6ac9', 'd40158a7-5290-4b3a-b52b-f3ae282a33bc', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'tuesday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('c9b03ef0-926c-4dba-902d-5e8260f4b087', 'd40158a7-5290-4b3a-b52b-f3ae282a33bc', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'wednesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a5e4ec09-5ca6-494d-a55d-7178444deb09', 'd40158a7-5290-4b3a-b52b-f3ae282a33bc', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'wednesday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('81d17594-8c3d-4350-b98d-a2bd7f18b758', '88f39d91-ae9d-401a-9559-7d65899a6acb', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'tuesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('9655f52d-5e50-44e5-8914-280e62fea2a2', '88f39d91-ae9d-401a-9559-7d65899a6acb', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'tuesday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('9189a653-0086-4a65-bbc9-02758afe00b8', '206b1ec1-e2f6-43b8-8541-3fa6b934c073', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'thursday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cd5feb77-389f-4ea9-9feb-b22b27140980', '206b1ec1-e2f6-43b8-8541-3fa6b934c073', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'thursday', '20:10', '21:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('333194cd-2483-48b1-bcd9-2aa880bed0f5', '206b1ec1-e2f6-43b8-8541-3fa6b934c073', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'friday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('6a4e952c-f8f5-4ed6-a465-fd35a0662bbd', '206b1ec1-e2f6-43b8-8541-3fa6b934c073', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'friday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('8e4b1f9f-175e-4597-af5e-2db34b124727', '471f63c0-8de8-4b73-9552-09e7ab718870', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'thursday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('53b2679a-df80-4d59-a057-2770a7b03136', '471f63c0-8de8-4b73-9552-09e7ab718870', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'thursday', '22:00', '22:50');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('22ffeca9-2c1a-4f9c-82a5-66d5a4e16feb', 'cee8cec0-d302-4c1f-8ed5-e9eb2206b6b7', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'friday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('a5d2f354-ea77-4495-8a36-27cd85123e60', 'cee8cec0-d302-4c1f-8ed5-e9eb2206b6b7', 'cc665ac5-861e-4af2-adf6-86b71732db91', 'friday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('862c1d50-e9e8-4012-982f-95563504de08', '9c0f5e3b-4321-4753-8f8f-4a7d6a1c2b34', '6b484df1-a447-4711-ad51-39a2d42996db', 'saturday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('5e9ad2b7-7379-4eaa-b069-f106d1bb5f45', '9c0f5e3b-4321-4753-8f8f-4a7d6a1c2b34', '6b484df1-a447-4711-ad51-39a2d42996db', 'saturday', '22:00', '22:50');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('b942c34b-0d40-4c2f-8ecb-93044845f718', '9c0f5e3b-4321-4753-8f8f-4a7d6a1c2b34', '6b484df1-a447-4711-ad51-39a2d42996db', 'wednesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cae02339-3739-447a-9dcd-47d8e0d4d2d1', '9c0f5e3b-4321-4753-8f8f-4a7d6a1c2b34', '6b484df1-a447-4711-ad51-39a2d42996db', 'wednesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('181a81db-1534-439a-bcdc-6ba225262268', '338dd044-8611-4f4f-8b4d-6a6b5b2a7f81', '6b484df1-a447-4711-ad51-39a2d42996db', 'tuesday', '19:20', '20:10');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('1062aaf9-a2f4-4388-85be-99f7b7d91e28', '338dd044-8611-4f4f-8b4d-6a6b5b2a7f81', '6b484df1-a447-4711-ad51-39a2d42996db', 'tuesday', '20:10', '21:00');
+
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('cc9e1d72-e910-42de-9b2a-6326c0e73e5c', '81dc9a03-7c48-4c3a-8a4e-3f14d8a2f155', '6b484df1-a447-4711-ad51-39a2d42996db', 'tuesday', '21:10', '22:00');
+
+INSERT INTO lesson.lesson_date (lesson_date_id, subject_id, classroom_id, week_day, start_time, end_time)
+VALUES ('9c13ff01-3f54-4cd5-87ad-8c8a28b4b679', '81dc9a03-7c48-4c3a-8a4e-3f14d8a2f155', '6b484df1-a447-4711-ad51-39a2d42996db', 'tuesday', '22:00', '22:50');
