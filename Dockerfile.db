@@ -1,7 +1,9 @@
 FROM postgres
 
-COPY initDb.sql /docker-entrypoint-initdb.d/
-
 ENV POSTGRES_USER=user
 ENV POSTGRES_PASSWORD=1234
 ENV POSTGRES_DB=testdatebase
+
+COPY initDb_part1.sql /docker-entrypoint-initdb.d/
+COPY initDb_part2.sql /docker-entrypoint-initdb.d/
+COPY initDb_part3.sql /docker-entrypoint-initdb.d/
