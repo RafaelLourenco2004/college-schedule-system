@@ -12,6 +12,8 @@ import com.example.demo.modules.lessson.domain.exceptions.MissingSubjectDependen
 import com.example.demo.modules.lessson.domain.usecases.student.GetStudent;
 import com.example.demo.modules.lessson.persistence.services.EnrollmentService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class StudentEnrollment {
 
@@ -21,6 +23,7 @@ public class StudentEnrollment {
     @Autowired
     private GetStudent getStudent;
 
+    @Transactional
     public Student enrollStudent(String studentId, List<Lesson> lessons) {
         Student student = getStudent.getOne(studentId);
 

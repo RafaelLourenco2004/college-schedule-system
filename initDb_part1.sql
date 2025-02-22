@@ -654,3 +654,6 @@ VALUES ('9c0f5e3b-4321-4753-8f8f-4a7d6a1c2b34', '6b484df1-a447-4711-ad51-39a2d42
 INSERT INTO lesson.lesson (subject_id, classroom_id)
 VALUES ('6f81a312-8547-449f-8d4e-5f13f2a9c1e4', '6b484df1-a447-4711-ad51-39a2d42996db');
 
+-- creating student
+INSERT INTO lesson.student (student_id, name, course_id)
+VALUES ('12345678', 'Rafael', 'b0d1a107-5dd0-48c9-a19e-bf93c53608e5');

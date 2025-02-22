@@ -24,7 +24,9 @@ public class GetLesson {
 
     public Lesson getOne(LessonId id) {
         return lessonService.getOne(id).orElseThrow(() -> new NotFoundException(
-                String.format("Could not find lesson of id %s.", id.toString())));
+                "Could not find lesson of id %s."));
+        // return lessonService.getOne(id).orElseThrow(() -> new NotFoundException(
+        // String.format("Could not find lesson of id %s.", id.toString())));
     }
 
     public List<Lesson> getAllLessonsWithinTimeRange(String start, String end) {
