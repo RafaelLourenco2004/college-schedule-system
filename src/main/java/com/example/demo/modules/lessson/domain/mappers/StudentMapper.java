@@ -14,7 +14,7 @@ public class StudentMapper {
 
         List<LessonDto> lessons;
         if (student.getLessons() != null) { 
-            lessons = student.getLessons().stream()
+            lessons = student.getLessons().stream()    
                     .map((lesson) -> LessonMapper.toDto(lesson))
                     .toList();
         } else
